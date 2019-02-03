@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wireguard on 菜鸟小熊</title>
-    <link>/tags/wireguard/</link>
+    <link>www.noobear.com/tags/wireguard/</link>
     <description>Recent content in Wireguard on 菜鸟小熊</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 17 Jan 2019 20:37:16 +0800</lastBuildDate>
     
-	<atom:link href="/tags/wireguard/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="www.noobear.com/tags/wireguard/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>从零开始的VPS生活 Vol2-3：科学上网——新秀Wireguard</title>
-      <link>/linux/days_with_vps_vol2_3/</link>
+      <link>www.noobear.com/linux/days_with_vps_vol2_3/</link>
       <pubDate>Thu, 17 Jan 2019 20:37:16 +0800</pubDate>
       
-      <guid>/linux/days_with_vps_vol2_3/</guid>
+      <guid>www.noobear.com/linux/days_with_vps_vol2_3/</guid>
       <description>Wireguard是VPN业界的新秀，它只专注于一件事情，就是把两台机器链接起来，其他的都不是它去考虑的问题。同样，这里不建议使用这种数据包</description>
     </item>
     

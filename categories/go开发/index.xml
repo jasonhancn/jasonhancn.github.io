@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Go开发 on 菜鸟小熊</title>
-    <link>/categories/go%E5%BC%80%E5%8F%91/</link>
+    <link>www.noobear.com/categories/go%E5%BC%80%E5%8F%91/</link>
     <description>Recent content in Go开发 on 菜鸟小熊</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 11 Feb 2018 21:08:34 +0800</lastBuildDate>
     
-	<atom:link href="/categories/go%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="www.noobear.com/categories/go%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Go开发</title>
-      <link>/golang/</link>
+      <link>www.noobear.com/golang/</link>
       <pubDate>Sun, 11 Feb 2018 21:08:34 +0800</pubDate>
       
-      <guid>/golang/</guid>
+      <guid>www.noobear.com/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>正确地使用在多个goroutine中使用waitgroup</title>
-      <link>/golang/proper_timing_for_waitgroup_add_in_goroutine/</link>
+      <link>www.noobear.com/golang/proper_timing_for_waitgroup_add_in_goroutine/</link>
       <pubDate>Sun, 25 Jun 2017 19:49:09 +0800</pubDate>
       
-      <guid>/golang/proper_timing_for_waitgroup_add_in_goroutine/</guid>
+      <guid>www.noobear.com/golang/proper_timing_for_waitgroup_add_in_goroutine/</guid>
       <description>在使用waitgroup等待goroutine执行完成的时候，遇到了这样一个问题，有很多goroutine没有执行完成，程序就退出了。 我的代</description>
     </item>
     

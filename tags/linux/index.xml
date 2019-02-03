@@ -2,75 +2,75 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on 菜鸟小熊</title>
-    <link>/tags/linux/</link>
+    <link>www.noobear.com/tags/linux/</link>
     <description>Recent content in Linux on 菜鸟小熊</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 03 Jan 2017 20:36:14 +0800</lastBuildDate>
     
-	<atom:link href="/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="www.noobear.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>从零开始的VPS生活 Vol1-3：初见CentOS7——网络优化</title>
-      <link>/linux/days_with_vps_vol1_3/</link>
+      <link>www.noobear.com/linux/days_with_vps_vol1_3/</link>
       <pubDate>Tue, 03 Jan 2017 20:36:14 +0800</pubDate>
       
-      <guid>/linux/days_with_vps_vol1_3/</guid>
+      <guid>www.noobear.com/linux/days_with_vps_vol1_3/</guid>
       <description>抽出好IP IP是开奖开出来的，第一篇我就写过。开奖就是建机器，测试IP，不好就删了再建。 在这里再强调一点，一定要找一个百度、Google、C</description>
     </item>
     
     <item>
       <title>从零开始的VPS生活 Vol1-2：初见CentOS7——基础安全</title>
-      <link>/linux/days_with_vps_vol1_2/</link>
+      <link>www.noobear.com/linux/days_with_vps_vol1_2/</link>
       <pubDate>Mon, 21 Nov 2016 23:36:52 +0800</pubDate>
       
-      <guid>/linux/days_with_vps_vol1_2/</guid>
+      <guid>www.noobear.com/linux/days_with_vps_vol1_2/</guid>
       <description>建立一台新的虚拟机，兴致勃勃地登上去，结果发现已经有几十上百次错误密码登录的记录&amp;hellip;没办法，总有一些人想借这种手段，完成他们不可</description>
     </item>
     
     <item>
       <title>为Ubuntu 16.04安装最新版Flash</title>
-      <link>/life/flash_for_ubuntu_1604/</link>
+      <link>www.noobear.com/life/flash_for_ubuntu_1604/</link>
       <pubDate>Thu, 08 Sep 2016 16:29:02 +0800</pubDate>
       
-      <guid>/life/flash_for_ubuntu_1604/</guid>
+      <guid>www.noobear.com/life/flash_for_ubuntu_1604/</guid>
       <description>最近最扯淡的新闻是什么？不是iphone7取消3.5接口，而是Adobe宣布Linux版Flash复出！ 啊逗比诶，停更的时候版本才11喂，真</description>
     </item>
     
     <item>
       <title>从零开始的VPS生活 Vol1-1：初见CentOS7——常用软件</title>
-      <link>/linux/days_with_vps_vol1_1/</link>
+      <link>www.noobear.com/linux/days_with_vps_vol1_1/</link>
       <pubDate>Tue, 06 Sep 2016 15:50:18 +0800</pubDate>
       
-      <guid>/linux/days_with_vps_vol1_1/</guid>
+      <guid>www.noobear.com/linux/days_with_vps_vol1_1/</guid>
       <description>几乎所有的个人服务器都安装的Linux系统，为什么？ ——不要钱。 这只是Linux众多优点的其中之一。开源为Linux带来了众多无需付费的社区</description>
     </item>
     
     <item>
       <title>Linux桌面福音，Longene QQ（附改轻聊版方法）</title>
-      <link>/software/longene_qq_light/</link>
+      <link>www.noobear.com/software/longene_qq_light/</link>
       <pubDate>Sat, 27 Aug 2016 20:22:10 +0800</pubDate>
       
-      <guid>/software/longene_qq_light/</guid>
+      <guid>www.noobear.com/software/longene_qq_light/</guid>
       <description>2017补充，QQ轻聊版已经被TIM取代了，由于Deepin的贡献，wine QQ现在已经有了很多更好的方案，同时crossover也提供了可</description>
     </item>
     
     <item>
       <title>彻底删除Wine</title>
-      <link>/life/remove_wine/</link>
+      <link>www.noobear.com/life/remove_wine/</link>
       <pubDate>Fri, 15 Jul 2016 12:10:41 +0800</pubDate>
       
-      <guid>/life/remove_wine/</guid>
+      <guid>www.noobear.com/life/remove_wine/</guid>
       <description>在半年前的某一天，脑子不知道哪根弦抽了，想给Linux上装个115浏览器下东西，然后就想到了Wine。 说道做到，sudo apt -install wine（Xub</description>
     </item>
     
     <item>
       <title>解决Xfce桌面图标文字重影的问题</title>
-      <link>/life/solve_xfce_icon_text_align_problem/</link>
+      <link>www.noobear.com/life/solve_xfce_icon_text_align_problem/</link>
       <pubDate>Sat, 02 Jul 2016 11:15:30 +0800</pubDate>
       
-      <guid>/life/solve_xfce_icon_text_align_problem/</guid>
+      <guid>www.noobear.com/life/solve_xfce_icon_text_align_problem/</guid>
       <description>自从把自用的Linux桌面系统换成了Xubuntu，腰不酸了，腿不疼了，敲代码都更有劲了。 不过，在某次改了桌面设定（具体改了啥还忘了）之后，</description>
     </item>
     

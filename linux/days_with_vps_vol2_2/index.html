@@ -11,23 +11,23 @@
 	<meta property="og:title" content="从零开始的VPS生活 Vol2-2：科学上网——利用Let`s Encrypt证书搭建IKEv2/IPSec VPN" />
 <meta property="og:description" content="有着“虚拟专用网”这个名头的VPN已经很少被用于科学上网了，因为它有点小题大作的意味。而且因为其数据包的标识非常明显，也容易被ban。本文仅" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/linux/days_with_vps_vol2_2/" />
+<meta property="og:url" content="www.noobear.com/linux/days_with_vps_vol2_2/" />
 <meta property="article:published_time" content="2018-01-21T20:37:16&#43;08:00"/>
 <meta property="article:modified_time" content="2018-01-21T20:37:16&#43;08:00"/>
 
-	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/www.noobear.com/css/style.css">
 	
-	<link rel="shortcut icon" href="/favicon.ico">
-	<link rel="stylesheet" href="/css/gitalk.css">
-	<script src="/js/gitalk.min.js"></script>
-	<script src="/js/md5.min.js"></script>
+	<link rel="shortcut icon" href="/www.noobear.com/favicon.ico">
+	<link rel="stylesheet" href="/www.noobear.com/css/gitalk.css">
+	<script src="/www.noobear.com/js/gitalk.min.js"></script>
+	<script src="/www.noobear.com/js/md5.min.js"></script>
 </head>
 <body class="body">
 	<div class="container container--outer">
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="菜鸟小熊" rel="home">
+			<a class="logo__link" href="/www.noobear.com" title="菜鸟小熊" rel="home">
 				<div class="logo__title">菜鸟小熊</div>
 				<div class="logo__tagline">IT杂货铺</div>
 			</a>
@@ -39,22 +39,22 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/java/">Java开发</a>
+			<a class="menu__link" href="www.noobear.com/java/">Java开发</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/golang/">Go开发</a>
+			<a class="menu__link" href="www.noobear.com/golang/">Go开发</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/linux/">Linux运维</a>
+			<a class="menu__link" href="www.noobear.com/linux/">Linux运维</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/software/">佳软推荐</a>
+			<a class="menu__link" href="www.noobear.com/software/">佳软推荐</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/life/">极客生活</a>
+			<a class="menu__link" href="www.noobear.com/life/">极客生活</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">关于本站</a>
+			<a class="menu__link" href="www.noobear.com/about/">关于本站</a>
 		</li>
 	</ul>
 </nav>
@@ -76,7 +76,7 @@
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/linux%e8%bf%90%e7%bb%b4" rel="category">Linux运维</a></span>
+	<span class="meta__text"><a class="meta__link" href="/www.noobear.com/categories/linux%e8%bf%90%e7%bb%b4" rel="category">Linux运维</a></span>
 </div>
 </div>
 		</header><div class="content post__content clearfix">
@@ -220,9 +220,9 @@ firewall-cmd --reload
 <div class="post__tags tags clearfix">
 	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="tag">科学上网</a></li>
-		<li class="tags__item"><a class="tags__link btn" href="/tags/vpn/" rel="tag">VPN</a></li>
-		<li class="tags__item"><a class="tags__link btn" href="/tags/lets-encrypt/" rel="tag">Let`s Encrypt</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/www.noobear.com/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="tag">科学上网</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/www.noobear.com/tags/vpn/" rel="tag">VPN</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/www.noobear.com/tags/lets-encrypt/" rel="tag">Let`s Encrypt</a></li>
 	</ul>
 </div>
 	</article>
@@ -230,7 +230,7 @@ firewall-cmd --reload
 
 <div class="authorbox clearfix">
 	<figure class="authorbox__avatar">
-		<img alt="Jason Han avatar" src="/img/auther.png" class="avatar" height="90" width="90">
+		<img alt="Jason Han avatar" src="/www.noobear.com/img/auther.png" class="avatar" height="90" width="90">
 	</figure>
 	<br>
 	<div class="authorbox__header">
@@ -246,10 +246,10 @@ firewall-cmd --reload
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/linux/days_with_vps_vol2_1/" rel="prev"><span class="post-nav__caption">«&thinsp;上一篇</span><p class="post-nav__post-title">从零开始的VPS生活 Vol2-1：科学上网——轻松搭建Shadowsocks服务端</p></a>
+		<a class="post-nav__link" href="www.noobear.com/linux/days_with_vps_vol2_1/" rel="prev"><span class="post-nav__caption">«&thinsp;上一篇</span><p class="post-nav__post-title">从零开始的VPS生活 Vol2-1：科学上网——轻松搭建Shadowsocks服务端</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/linux/days_with_vps_vol2_3/" rel="next"><span class="post-nav__caption">下一篇&thinsp;»</span><p class="post-nav__post-title">从零开始的VPS生活 Vol2-3：科学上网——新秀Wireguard</p></a>
+		<a class="post-nav__link" href="www.noobear.com/linux/days_with_vps_vol2_3/" rel="next"><span class="post-nav__caption">下一篇&thinsp;»</span><p class="post-nav__post-title">从零开始的VPS生活 Vol2-3：科学上网——新秀Wireguard</p></a>
 	</div>
 </nav>
 
@@ -263,39 +263,39 @@ firewall-cmd --reload
 			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="/" />
+		<input type="hidden" name="sitesearch" value="www.noobear.com" />
 	</form>
 </div>
 <div class="widget-recent widget">
 	<h4 class="widget__title">最新文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_4/">从零开始的VPS生活 Vol2-4：科学上网——稳定压倒一切的v2ray</a></li>
-			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_3/">从零开始的VPS生活 Vol2-3：科学上网——新秀Wireguard</a></li>
-			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_2/">从零开始的VPS生活 Vol2-2：科学上网——利用Let`s Encrypt证书搭建IKEv2/IPSec VPN</a></li>
-			<li class="widget__item"><a class="widget__link" href="/java/add_cors_rule_in_spring_boot/">为使用Spring Boot的Web应用更改CORS规则</a></li>
-			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_1/">从零开始的VPS生活 Vol2-1：科学上网——轻松搭建Shadowsocks服务端</a></li>
+			<li class="widget__item"><a class="widget__link" href="www.noobear.com/linux/days_with_vps_vol2_4/">从零开始的VPS生活 Vol2-4：科学上网——稳定压倒一切的v2ray</a></li>
+			<li class="widget__item"><a class="widget__link" href="www.noobear.com/linux/days_with_vps_vol2_3/">从零开始的VPS生活 Vol2-3：科学上网——新秀Wireguard</a></li>
+			<li class="widget__item"><a class="widget__link" href="www.noobear.com/linux/days_with_vps_vol2_2/">从零开始的VPS生活 Vol2-2：科学上网——利用Let`s Encrypt证书搭建IKEv2/IPSec VPN</a></li>
+			<li class="widget__item"><a class="widget__link" href="www.noobear.com/java/add_cors_rule_in_spring_boot/">为使用Spring Boot的Web应用更改CORS规则</a></li>
+			<li class="widget__item"><a class="widget__link" href="www.noobear.com/linux/days_with_vps_vol2_1/">从零开始的VPS生活 Vol2-1：科学上网——轻松搭建Shadowsocks服务端</a></li>
 		</ul>
 	</div>
 </div>
 <div class="widget-taglist widget">
 	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/centos" title="Centos">Centos (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang" title="Golang">Golang (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/lets-encrypt" title="Lets encrypt">Lets encrypt (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux" title="Linux">Linux (7)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/qq" title="Qq">Qq (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/shadowsocks" title="Shadowsocks">Shadowsocks (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/spring-boot" title="Spring boot">Spring boot (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/v2ray" title="V2ray">V2ray (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="Vpn">Vpn (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vps" title="Vps">Vps (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/wireguard" title="Wireguard">Wireguard (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e5%9f%9f%e5%90%8d" title="域名">域名 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e5%ae%89%e5%85%a8" title="安全">安全 (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91" title="科学上网">科学上网 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/www.noobear.com/tags/centos" title="Centos">Centos (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/www.noobear.com/tags/golang" title="Golang">Golang (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/www.noobear.com/tags/lets-encrypt" title="Lets encrypt">Lets encrypt (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/www.noobear.com/tags/linux" title="Linux">Linux (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/www.noobear.com/tags/qq" title="Qq">Qq (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/www.noobear.com/tags/shadowsocks" title="Shadowsocks">Shadowsocks (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/www.noobear.com/tags/spring-boot" title="Spring boot">Spring boot (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/www.noobear.com/tags/v2ray" title="V2ray">V2ray (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/www.noobear.com/tags/vpn" title="Vpn">Vpn (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/www.noobear.com/tags/vps" title="Vps">Vps (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/www.noobear.com/tags/wine" title="Wine">Wine (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/www.noobear.com/tags/wireguard" title="Wireguard">Wireguard (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/www.noobear.com/tags/%e5%9f%9f%e5%90%8d" title="域名">域名 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/www.noobear.com/tags/%e5%ae%89%e5%85%a8" title="安全">安全 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/www.noobear.com/tags/%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91" title="科学上网">科学上网 (4)</a>
 	</div>
 </div>
 </aside>
@@ -310,7 +310,7 @@ firewall-cmd --reload
 	</div>
 </footer>
 	</div>
-<script async defer src="/js/menu.js"></script></body>
+<script async defer src="/www.noobear.com/js/menu.js"></script></body>
 <script>
 var gitalk = new Gitalk({
   clientID: "b2e19b887672d57af28f",
