@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>极客生活 on 菜鸟小熊</title>
-    <link>www.noobear.com/categories/%E6%9E%81%E5%AE%A2%E7%94%9F%E6%B4%BB/</link>
+    <link>/categories/%E6%9E%81%E5%AE%A2%E7%94%9F%E6%B4%BB/</link>
     <description>Recent content in 极客生活 on 菜鸟小熊</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 11 Feb 2018 21:07:31 +0800</lastBuildDate>
     
-	<atom:link href="www.noobear.com/categories/%E6%9E%81%E5%AE%A2%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/%E6%9E%81%E5%AE%A2%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>极客生活</title>
-      <link>www.noobear.com/life/</link>
+      <link>/life/</link>
       <pubDate>Sun, 11 Feb 2018 21:07:31 +0800</pubDate>
       
-      <guid>www.noobear.com/life/</guid>
+      <guid>/life/</guid>
       <description></description>
     </item>
     
     <item>
       <title>为Ubuntu 16.04安装最新版Flash</title>
-      <link>www.noobear.com/life/flash_for_ubuntu_1604/</link>
+      <link>/life/flash_for_ubuntu_1604/</link>
       <pubDate>Thu, 08 Sep 2016 16:29:02 +0800</pubDate>
       
-      <guid>www.noobear.com/life/flash_for_ubuntu_1604/</guid>
+      <guid>/life/flash_for_ubuntu_1604/</guid>
       <description>最近最扯淡的新闻是什么？不是iphone7取消3.5接口，而是Adobe宣布Linux版Flash复出！ 啊逗比诶，停更的时候版本才11喂，真</description>
     </item>
     
     <item>
       <title>彻底删除Wine</title>
-      <link>www.noobear.com/life/remove_wine/</link>
+      <link>/life/remove_wine/</link>
       <pubDate>Fri, 15 Jul 2016 12:10:41 +0800</pubDate>
       
-      <guid>www.noobear.com/life/remove_wine/</guid>
+      <guid>/life/remove_wine/</guid>
       <description>在半年前的某一天，脑子不知道哪根弦抽了，想给Linux上装个115浏览器下东西，然后就想到了Wine。 说道做到，sudo apt -install wine（Xub</description>
     </item>
     
     <item>
       <title>解决Xfce桌面图标文字重影的问题</title>
-      <link>www.noobear.com/life/solve_xfce_icon_text_align_problem/</link>
+      <link>/life/solve_xfce_icon_text_align_problem/</link>
       <pubDate>Sat, 02 Jul 2016 11:15:30 +0800</pubDate>
       
-      <guid>www.noobear.com/life/solve_xfce_icon_text_align_problem/</guid>
+      <guid>/life/solve_xfce_icon_text_align_problem/</guid>
       <description>自从把自用的Linux桌面系统换成了Xubuntu，腰不酸了，腿不疼了，敲代码都更有劲了。 不过，在某次改了桌面设定（具体改了啥还忘了）之后，</description>
     </item>
     

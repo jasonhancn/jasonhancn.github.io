@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wine on 菜鸟小熊</title>
-    <link>www.noobear.com/tags/wine/</link>
+    <link>/tags/wine/</link>
     <description>Recent content in Wine on 菜鸟小熊</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sat, 27 Aug 2016 20:22:10 +0800</lastBuildDate>
     
-	<atom:link href="www.noobear.com/tags/wine/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/wine/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Linux桌面福音，Longene QQ（附改轻聊版方法）</title>
-      <link>www.noobear.com/software/longene_qq_light/</link>
+      <link>/software/longene_qq_light/</link>
       <pubDate>Sat, 27 Aug 2016 20:22:10 +0800</pubDate>
       
-      <guid>www.noobear.com/software/longene_qq_light/</guid>
+      <guid>/software/longene_qq_light/</guid>
       <description>2017补充，QQ轻聊版已经被TIM取代了，由于Deepin的贡献，wine QQ现在已经有了很多更好的方案，同时crossover也提供了可</description>
     </item>
     
     <item>
       <title>彻底删除Wine</title>
-      <link>www.noobear.com/life/remove_wine/</link>
+      <link>/life/remove_wine/</link>
       <pubDate>Fri, 15 Jul 2016 12:10:41 +0800</pubDate>
       
-      <guid>www.noobear.com/life/remove_wine/</guid>
+      <guid>/life/remove_wine/</guid>
       <description>在半年前的某一天，脑子不知道哪根弦抽了，想给Linux上装个115浏览器下东西，然后就想到了Wine。 说道做到，sudo apt -install wine（Xub</description>
     </item>
     

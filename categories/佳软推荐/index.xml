@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>佳软推荐 on 菜鸟小熊</title>
-    <link>www.noobear.com/categories/%E4%BD%B3%E8%BD%AF%E6%8E%A8%E8%8D%90/</link>
+    <link>/categories/%E4%BD%B3%E8%BD%AF%E6%8E%A8%E8%8D%90/</link>
     <description>Recent content in 佳软推荐 on 菜鸟小熊</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 11 Feb 2018 21:09:12 +0800</lastBuildDate>
     
-	<atom:link href="www.noobear.com/categories/%E4%BD%B3%E8%BD%AF%E6%8E%A8%E8%8D%90/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/%E4%BD%B3%E8%BD%AF%E6%8E%A8%E8%8D%90/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>佳软推荐</title>
-      <link>www.noobear.com/software/</link>
+      <link>/software/</link>
       <pubDate>Sun, 11 Feb 2018 21:09:12 +0800</pubDate>
       
-      <guid>www.noobear.com/software/</guid>
+      <guid>/software/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux桌面福音，Longene QQ（附改轻聊版方法）</title>
-      <link>www.noobear.com/software/longene_qq_light/</link>
+      <link>/software/longene_qq_light/</link>
       <pubDate>Sat, 27 Aug 2016 20:22:10 +0800</pubDate>
       
-      <guid>www.noobear.com/software/longene_qq_light/</guid>
+      <guid>/software/longene_qq_light/</guid>
       <description>2017补充，QQ轻聊版已经被TIM取代了，由于Deepin的贡献，wine QQ现在已经有了很多更好的方案，同时crossover也提供了可</description>
     </item>
     

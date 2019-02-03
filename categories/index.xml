@@ -2,56 +2,56 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 菜鸟小熊</title>
-    <link>www.noobear.com/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on 菜鸟小熊</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     
-	<atom:link href="www.noobear.com/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Go开发</title>
-      <link>www.noobear.com/categories/go%E5%BC%80%E5%8F%91/</link>
+      <link>/categories/go%E5%BC%80%E5%8F%91/</link>
       <pubDate>Sun, 11 Feb 2018 21:08:34 +0800</pubDate>
       
-      <guid>www.noobear.com/categories/go%E5%BC%80%E5%8F%91/</guid>
+      <guid>/categories/go%E5%BC%80%E5%8F%91/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java开发</title>
-      <link>www.noobear.com/categories/java%E5%BC%80%E5%8F%91/</link>
+      <link>/categories/java%E5%BC%80%E5%8F%91/</link>
       <pubDate>Sun, 11 Feb 2018 21:08:44 +0800</pubDate>
       
-      <guid>www.noobear.com/categories/java%E5%BC%80%E5%8F%91/</guid>
+      <guid>/categories/java%E5%BC%80%E5%8F%91/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux运维</title>
-      <link>www.noobear.com/categories/linux%E8%BF%90%E7%BB%B4/</link>
+      <link>/categories/linux%E8%BF%90%E7%BB%B4/</link>
       <pubDate>Sat, 26 Jan 2019 20:37:16 +0800</pubDate>
       
-      <guid>www.noobear.com/categories/linux%E8%BF%90%E7%BB%B4/</guid>
+      <guid>/categories/linux%E8%BF%90%E7%BB%B4/</guid>
       <description></description>
     </item>
     
     <item>
       <title>佳软推荐</title>
-      <link>www.noobear.com/categories/%E4%BD%B3%E8%BD%AF%E6%8E%A8%E8%8D%90/</link>
+      <link>/categories/%E4%BD%B3%E8%BD%AF%E6%8E%A8%E8%8D%90/</link>
       <pubDate>Sun, 11 Feb 2018 21:09:12 +0800</pubDate>
       
-      <guid>www.noobear.com/categories/%E4%BD%B3%E8%BD%AF%E6%8E%A8%E8%8D%90/</guid>
+      <guid>/categories/%E4%BD%B3%E8%BD%AF%E6%8E%A8%E8%8D%90/</guid>
       <description></description>
     </item>
     
     <item>
       <title>极客生活</title>
-      <link>www.noobear.com/categories/%E6%9E%81%E5%AE%A2%E7%94%9F%E6%B4%BB/</link>
+      <link>/categories/%E6%9E%81%E5%AE%A2%E7%94%9F%E6%B4%BB/</link>
       <pubDate>Sun, 11 Feb 2018 21:07:31 +0800</pubDate>
       
-      <guid>www.noobear.com/categories/%E6%9E%81%E5%AE%A2%E7%94%9F%E6%B4%BB/</guid>
+      <guid>/categories/%E6%9E%81%E5%AE%A2%E7%94%9F%E6%B4%BB/</guid>
       <description></description>
     </item>
     

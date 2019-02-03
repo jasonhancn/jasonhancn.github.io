@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vps on 菜鸟小熊</title>
-    <link>www.noobear.com/tags/vps/</link>
+    <link>/tags/vps/</link>
     <description>Recent content in Vps on 菜鸟小熊</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Fri, 02 Sep 2016 22:43:09 +0800</lastBuildDate>
     
-	<atom:link href="www.noobear.com/tags/vps/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/vps/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>从零开始的VPS生活 Vol0：如何花掉你的钱</title>
-      <link>www.noobear.com/linux/days_with_vps_vol0/</link>
+      <link>/linux/days_with_vps_vol0/</link>
       <pubDate>Fri, 02 Sep 2016 22:43:09 +0800</pubDate>
       
-      <guid>www.noobear.com/linux/days_with_vps_vol0/</guid>
+      <guid>/linux/days_with_vps_vol0/</guid>
       <description>屯了超级久的VPS入门系列，基本上就是我自己折腾历程的记录，干货充足。 序言 对于广大码农和准码农群体，有台可以任凭差遣的服务器可谓美事一桩。这</description>
     </item>
     
