@@ -1,236 +1,290 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html class="no-js" lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Linux运维</title>
-
-<meta name="generator" content="Hugo 0.36" />
-<meta property="og:title" content="Linux运维" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Linux运维 - 菜鸟小熊</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta name="generator" content="Hugo 0.54.0" />
+	<meta property="og:title" content="Linux运维" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/linux/" />
 
-
-
 <meta property="og:updated_time" content="2018-02-11T21:08:39&#43;08:00"/>
 
-
-
-
-
-
-
-
-
-
-<link rel="alternate" type="application/rss+xml" title="菜鸟小熊 Feed" href="/linux/index.xml">
-<link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
-<script type="text/javascript" src="/js/scripts.js"></script>
-<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="alternate" type="application/rss+xml" href="/linux/index.xml" title="菜鸟小熊">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/css/gitalk.css">
+	<script src="/js/gitalk.min.js"></script>
+	<script src="/js/md5.min.js"></script>
 </head>
-<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
-	<div class="container container-outer">
-		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
-			<div class="container container-inner clearfix">
-				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
-					<a class="logo__link" href="/" title="菜鸟小熊" rel="home">
-						<h1 class="logo__title">菜鸟小熊</h1>
-						<h2 class="logo__tagline">IT杂货铺</h2>
-					</a>
-				</div>
-			</div>
-			
-<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="菜鸟小熊" rel="home">
+				<div class="logo__title">菜鸟小熊</div>
+				<div class="logo__tagline">IT杂货铺</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">菜单</span>
+	</button>
 	<ul class="menu__list">
-		<li class="menu__item"><a class="menu__link" href="/java/">JAVA开发</a></li>
-		<li class="menu__item"><a class="menu__link" href="/golang/">GO开发</a></li>
-		<li class="menu__item menu__item--active"><a class="menu__link" href="/linux/">LINUX运维</a></li>
-		<li class="menu__item"><a class="menu__link" href="/software/">佳软推荐</a></li>
-		<li class="menu__item"><a class="menu__link" href="/life/">极客生活</a></li>
-		<li class="menu__item"><a class="menu__link" href="/about/">关于本站</a></li>
+		<li class="menu__item">
+			<a class="menu__link" href="/java/">Java开发</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/golang/">Go开发</a>
+		</li>
+		<li class="menu__item menu__item--active">
+			<a class="menu__link" href="/linux/">Linux运维</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/software/">佳软推荐</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/life/">极客生活</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">关于本站</a>
+		</li>
 	</ul>
 </nav>
 
-		</header>
-		<div class="wrapper clearfix">
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">Linux运维</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/linux/days_with_vps_vol2_4/" rel="bookmark">
+			从零开始的VPS生活 Vol2-4：科学上网——稳定压倒一切的v2ray
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-01-26T20:37:16">January 26, 2019</time>
+</div>
 
-	<main class="main-content list content" role="main">
-		<header class="page-header">
-			<h1 class="page-header__title">Linux运维</h1>
-		</header><article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/linux/days_with_vps_vol2_4/" rel="bookmark">从零开始的VPS生活 Vol2-4：科学上网——稳定压倒一切的v2ray</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2019-01-26T20:37:16">2019-01-26</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			v2ray是一个更nerd的科学上网工具，论好用，它不及ss的丰富“产业链”（官网原话），但是因为它的数据包载体更加灵活，所以用它作为一个稳
-		</div>
-		<div class="list__footer">
-			<a class="list__footer-readmore btn" href="/linux/days_with_vps_vol2_4/">查看更多…</a>
-		</div>
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/linux%e8%bf%90%e7%bb%b4" rel="category">Linux运维</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		v2ray是一个更nerd的科学上网工具，论好用，它不及ss的丰富“产业链”（官网原话），但是因为它的数据包载体更加灵活，所以用它作为一个稳
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/linux/days_with_vps_vol2_4/">查看更多…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/linux/days_with_vps_vol2_3/" rel="bookmark">
+			从零开始的VPS生活 Vol2-3：科学上网——新秀Wireguard
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-01-17T20:37:16">January 17, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/linux%e8%bf%90%e7%bb%b4" rel="category">Linux运维</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Wireguard是VPN业界的新秀，它只专注于一件事情，就是把两台机器链接起来，其他的都不是它去考虑的问题。同样，这里不建议使用这种数据包
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/linux/days_with_vps_vol2_3/">查看更多…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/linux/days_with_vps_vol2_2/" rel="bookmark">
+			从零开始的VPS生活 Vol2-2：科学上网——利用Let`s Encrypt证书搭建IKEv2/IPSec VPN
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2018-01-21T20:37:16">January 21, 2018</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/linux%e8%bf%90%e7%bb%b4" rel="category">Linux运维</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		有着“虚拟专用网”这个名头的VPN已经很少被用于科学上网了，因为它有点小题大作的意味。而且因为其数据包的标识非常明显，也容易被ban。本文仅
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/linux/days_with_vps_vol2_2/">查看更多…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/linux/days_with_vps_vol2_1/" rel="bookmark">
+			从零开始的VPS生活 Vol2-1：科学上网——轻松搭建Shadowsocks服务端
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2017-12-10T21:37:06">December 10, 2017</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/linux%e8%bf%90%e7%bb%b4" rel="category">Linux运维</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		shadowsocks大名鼎鼎，是什么、怎么用我就不说了，外事用Google。 一键包很多，但是我个人很喜欢用官方的方法安装，这样更容易更新。
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/linux/days_with_vps_vol2_1/">查看更多…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/linux/days_with_vps_vol1_3/" rel="bookmark">
+			从零开始的VPS生活 Vol1-3：初见CentOS7——网络优化
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2017-01-03T20:36:14">January 03, 2017</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/linux%e8%bf%90%e7%bb%b4" rel="category">Linux运维</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		抽出好IP IP是开奖开出来的，第一篇我就写过。开奖就是建机器，测试IP，不好就删了再建。 在这里再强调一点，一定要找一个百度、Google、C
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/linux/days_with_vps_vol1_3/">查看更多…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/linux/days_with_vps_vol1_2/" rel="bookmark">
+			从零开始的VPS生活 Vol1-2：初见CentOS7——基础安全
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2016-11-21T23:36:52">November 21, 2016</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/linux%e8%bf%90%e7%bb%b4" rel="category">Linux运维</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		建立一台新的虚拟机，兴致勃勃地登上去，结果发现已经有几十上百次错误密码登录的记录&hellip;没办法，总有一些人想借这种手段，完成他们不可
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/linux/days_with_vps_vol1_2/">查看更多…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/linux/days_with_vps_vol1_1/" rel="bookmark">
+			从零开始的VPS生活 Vol1-1：初见CentOS7——常用软件
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2016-09-06T15:50:18">September 06, 2016</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/linux%e8%bf%90%e7%bb%b4" rel="category">Linux运维</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		几乎所有的个人服务器都安装的Linux系统，为什么？ ——不要钱。 这只是Linux众多优点的其中之一。开源为Linux带来了众多无需付费的社区
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/linux/days_with_vps_vol1_1/">查看更多…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/linux/days_with_vps_vol0/" rel="bookmark">
+			从零开始的VPS生活 Vol0：如何花掉你的钱
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2016-09-02T22:43:09">September 02, 2016</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/linux%e8%bf%90%e7%bb%b4" rel="category">Linux运维</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		屯了超级久的VPS入门系列，基本上就是我自己折腾历程的记录，干货充足。 序言 对于广大码农和准码农群体，有台可以任凭差遣的服务器可谓美事一桩。这
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/linux/days_with_vps_vol0/">查看更多…</a>
 	</div>
 </article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/linux/days_with_vps_vol2_3/" rel="bookmark">从零开始的VPS生活 Vol2-3：科学上网——新秀Wireguard</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2019-01-17T20:37:16">2019-01-17</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			Wireguard是VPN业界的新秀，它只专注于一件事情，就是把两台机器链接起来，其他的都不是它去考虑的问题。同样，这里不建议使用这种数据包
-		</div>
-		<div class="list__footer">
-			<a class="list__footer-readmore btn" href="/linux/days_with_vps_vol2_3/">查看更多…</a>
-		</div>
-	</div>
-</article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/linux/days_with_vps_vol2_2/" rel="bookmark">从零开始的VPS生活 Vol2-2：科学上网——利用Let`s Encrypt证书搭建IKEv2/IPSec VPN</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2018-01-21T20:37:16">2018-01-21</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			有着“虚拟专用网”这个名头的VPN已经很少被用于科学上网了，因为它有点小题大作的意味。而且因为其数据包的标识非常明显，也容易被ban。本文仅
-		</div>
-		<div class="list__footer">
-			<a class="list__footer-readmore btn" href="/linux/days_with_vps_vol2_2/">查看更多…</a>
-		</div>
-	</div>
-</article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/linux/days_with_vps_vol2_1/" rel="bookmark">从零开始的VPS生活 Vol2-1：科学上网——轻松搭建Shadowsocks服务端</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2017-12-10T21:37:06">2017-12-10</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			shadowsocks大名鼎鼎，是什么、怎么用我就不说了，外事用Google。 一键包很多，但是我个人很喜欢用官方的方法安装，这样更容易更新。
-		</div>
-		<div class="list__footer">
-			<a class="list__footer-readmore btn" href="/linux/days_with_vps_vol2_1/">查看更多…</a>
-		</div>
-	</div>
-</article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/linux/days_with_vps_vol1_3/" rel="bookmark">从零开始的VPS生活 Vol1-3：初见CentOS7——网络优化</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2017-01-03T20:36:14">2017-01-03</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			抽出好IP IP是开奖开出来的，第一篇我就写过。开奖就是建机器，测试IP，不好就删了再建。 在这里再强调一点，一定要找一个百度、Google、C
-		</div>
-		<div class="list__footer">
-			<a class="list__footer-readmore btn" href="/linux/days_with_vps_vol1_3/">查看更多…</a>
-		</div>
-	</div>
-</article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/linux/days_with_vps_vol1_2/" rel="bookmark">从零开始的VPS生活 Vol1-2：初见CentOS7——基础安全</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2016-11-21T23:36:52">2016-11-21</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			建立一台新的虚拟机，兴致勃勃地登上去，结果发现已经有几十上百次错误密码登录的记录&hellip;没办法，总有一些人想借这种手段，完成他们不可
-		</div>
-		<div class="list__footer">
-			<a class="list__footer-readmore btn" href="/linux/days_with_vps_vol1_2/">查看更多…</a>
-		</div>
-	</div>
-</article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/linux/days_with_vps_vol1_1/" rel="bookmark">从零开始的VPS生活 Vol1-1：初见CentOS7——常用软件</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2016-09-06T15:50:18">2016-09-06</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			几乎所有的个人服务器都安装的Linux系统，为什么？ ——不要钱。 这只是Linux众多优点的其中之一。开源为Linux带来了众多无需付费的社区
-		</div>
-		<div class="list__footer">
-			<a class="list__footer-readmore btn" href="/linux/days_with_vps_vol1_1/">查看更多…</a>
-		</div>
-	</div>
-</article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/linux/days_with_vps_vol0/" rel="bookmark">从零开始的VPS生活 Vol0：如何花掉你的钱</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2016-09-02T22:43:09">2016-09-02</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			屯了超级久的VPS入门系列，基本上就是我自己折腾历程的记录，干货充足。 序言 对于广大码农和准码农群体，有台可以任凭差遣的服务器可谓美事一桩。这
-		</div>
-		<div class="list__footer">
-			<a class="list__footer-readmore btn" href="/linux/days_with_vps_vol0/">查看更多…</a>
-		</div>
-	</div>
-</article>
+</main>
 
 
-		
-	</main>
-
-<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
-	
-<div class="widget-search widget">
-	<form class="widget-search__form" role="search" method="get" action="https://www.baidu.com/s" target="_blank">
+			</div>
+			
+<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<span class="screen-reader-text">搜索:</span>
-			<input class="widget-search__field" type="text" placeholder="百度自定义搜索" value="" name="wd">
+			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
-		<input class="widget-search__submit" type="submit" value="搜索">
-		<input type="hidden" name="ct" value="noobear" />
-		<input type="hidden" name="si" value="www.noobear.com" />
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="/" />
 	</form>
 </div>
-	
 <div class="widget-recent widget">
-	<h4 class="widget__title">近期文章</h4>
+	<h4 class="widget__title">最新文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_4/">从零开始的VPS生活 Vol2-4：科学上网——稳定压倒一切的v2ray</a></li>
@@ -238,52 +292,40 @@
 			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_2/">从零开始的VPS生活 Vol2-2：科学上网——利用Let`s Encrypt证书搭建IKEv2/IPSec VPN</a></li>
 			<li class="widget__item"><a class="widget__link" href="/java/add_cors_rule_in_spring_boot/">为使用Spring Boot的Web应用更改CORS规则</a></li>
 			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_1/">从零开始的VPS生活 Vol2-1：科学上网——轻松搭建Shadowsocks服务端</a></li>
-			<li class="widget__item"><a class="widget__link" href="/golang/proper_timing_for_waitgroup_add_in_goroutine/">正确地使用在多个goroutine中使用waitgroup</a></li>
-			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol1_3/">从零开始的VPS生活 Vol1-3：初见CentOS7——网络优化</a></li>
-			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol1_2/">从零开始的VPS生活 Vol1-2：初见CentOS7——基础安全</a></li>
-			<li class="widget__item"><a class="widget__link" href="/life/flash_for_ubuntu_1604/">为Ubuntu 16.04安装最新版Flash</a></li>
-			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol1_1/">从零开始的VPS生活 Vol1-1：初见CentOS7——常用软件</a></li>
 		</ul>
 	</div>
 </div>
-
-	
-	
-	
 <div class="widget-taglist widget">
 	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
-		<a class="widget__link widget__link--taglist" href="/tags/centos" title="centos">centos (2)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/golang" title="golang">golang (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/lets-encrypt" title="lets-encrypt">lets-encrypt (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (7)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/qq" title="qq">qq (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/shadowsocks" title="shadowsocks">shadowsocks (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/spring-boot" title="spring-boot">spring-boot (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/v2ray" title="v2ray">v2ray (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/vpn" title="vpn">vpn (2)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/vps" title="vps">vps (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/wine" title="wine">wine (2)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/wireguard" title="wireguard">wireguard (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e5%9f%9f%e5%90%8d" title="域名">域名 (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e5%ae%89%e5%85%a8" title="安全">安全 (1)</a>
-		<a class="widget__link widget__link--taglist" href="/tags/%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91" title="科学上网">科学上网 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/centos" title="Centos">Centos (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang" title="Golang">Golang (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/lets-encrypt" title="Lets encrypt">Lets encrypt (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux" title="Linux">Linux (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/qq" title="Qq">Qq (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/shadowsocks" title="Shadowsocks">Shadowsocks (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/spring-boot" title="Spring boot">Spring boot (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/v2ray" title="V2ray">V2ray (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vpn" title="Vpn">Vpn (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vps" title="Vps">Vps (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wine" title="Wine">Wine (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wireguard" title="Wireguard">Wireguard (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e5%9f%9f%e5%90%8d" title="域名">域名 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e5%ae%89%e5%85%a8" title="安全">安全 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91" title="科学上网">科学上网 (4)</a>
 	</div>
 </div>
 </aside>
-
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 菜鸟小熊.
+			<span class="footer__copyright-credits">Generated by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and Hosted by </a><a href="https://www.vultr.com/?ref=6907667" rel="nofollow noopener" target="_blank\">Vultr</a>.</span>
+		</div>
 	</div>
-		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
-			<div class="container container-inner">
-				<p class="footer__copyright">&copy; 2019 菜鸟小熊. <span class="footer__copyright-credits">Generated by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and Hosted by </a><a href="https://www.vultr.com/?ref=6907667" rel="nofollow noopener" target="_blank">Vultr</a>.</span></p>
-			</div>
-		</footer>
+</footer>
 	</div>
-
-<script>
-	var navigation = responsiveNav(".menu", {
-		navClass: "menu--collapse",
-	});
-</script>
-</body>
+<script async defer src="/js/menu.js"></script></body>
 </html>
