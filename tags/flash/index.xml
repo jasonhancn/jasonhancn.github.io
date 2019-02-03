@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flash on 菜鸟小熊</title>
+    <link>/tags/flash/</link>
+    <description>Recent content in Flash on 菜鸟小熊</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 08 Sep 2016 16:29:02 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/flash/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>为Ubuntu 16.04安装最新版Flash</title>
+      <link>/life/flash_for_ubuntu_1604/</link>
+      <pubDate>Thu, 08 Sep 2016 16:29:02 +0800</pubDate>
+      
+      <guid>/life/flash_for_ubuntu_1604/</guid>
+      <description>最近最扯淡的新闻是什么？不是iphone7取消3.5接口，而是Adobe宣布Linux版Flash复出！ 啊逗比诶，停更的时候版本才11喂，真</description>
+    </item>
+    
+  </channel>
+</rss>

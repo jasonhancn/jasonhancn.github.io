@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>从零开始的VPS生活 Vol1-3：初见CentOS7——网络优化</title>
+
+<meta name="generator" content="Hugo 0.36" />
+<meta property="og:title" content="从零开始的VPS生活 Vol1-3：初见CentOS7——网络优化" />
+<meta property="og:description" content="抽出好IP IP是开奖开出来的，第一篇我就写过。开奖就是建机器，测试IP，不好就删了再建。 在这里再强调一点，一定要找一个百度、Google、C" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/linux/days_with_vps_vol1_3/" />
+
+
+
+<meta property="article:published_time" content="2017-01-03T20:36:14&#43;08:00"/>
+
+<meta property="article:modified_time" content="2017-01-03T20:36:14&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+<script type="text/javascript" src="/js/scripts.js"></script>
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/css/gitalk.min.css">
+<script src="/js/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="/" title="菜鸟小熊" rel="home">
+						<h1 class="logo__title">菜鸟小熊</h1>
+						<h2 class="logo__tagline">IT杂货铺</h2>
+					</a>
+				</div>
+			</div>
+			
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item"><a class="menu__link" href="/java/">JAVA开发</a></li>
+		<li class="menu__item"><a class="menu__link" href="/golang/">GO开发</a></li>
+		<li class="menu__item"><a class="menu__link" href="/linux/">LINUX运维</a></li>
+		<li class="menu__item"><a class="menu__link" href="/software/">佳软推荐</a></li>
+		<li class="menu__item"><a class="menu__link" href="/life/">极客生活</a></li>
+		<li class="menu__item"><a class="menu__link" href="/about/">关于本站</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<main class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">从零开始的VPS生活 Vol1-3：初见CentOS7——网络优化</h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<span><time class="post__meta-date" datetime="2017-01-03T20:36:14">2017-01-03</time></span>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/linux%e8%bf%90%e7%bb%b4" rel="category">Linux运维</a></span>
+			</p>
+		</header>
+		<div class="post__content clearfix">
+			
+
+<h2 id="抽出好ip">抽出好IP</h2>
+
+<p>IP是开奖开出来的，第一篇我就写过。开奖就是建机器，测试IP，不好就删了再建。</p>
+
+<p>在这里再强调一点，一定要找一个百度、Google、ChinaZ站长工具、IPIP.net等各IP库都识别为你想要的那个国家的地址，否则后患无穷。</p>
+
+<p>我就因为之前的日本IP被Google识别为印尼IP，导致Play服务和搜索都被影响，最终废掉了那台机器（<strong>追加</strong>：第二个IP也被Google识别错误成阿联酋了，不过登录账户并固定国家为日本之后还是可以顺利使用的，可以通过<a href="https://support.google.com/websearch/contact/ip">Report IP problems</a>来向Google反馈，不过<del>响应会非常慢</del>根本没有用）&hellip;所以一定要提前试好，一劳永逸。</p>
+
+<blockquote>
+<p>Vultr的日本机房位置很好，东京的NTT机房，但是因为亚洲国家都缺IP所以也引进了很多外国段的IP，识别错误也很常见，需要更加注意。</p>
+</blockquote>
+
+<h2 id="内核模块和拥塞算法">内核模块和拥塞算法</h2>
+
+<p>更改拥塞控制算法可以让高延迟，高丢包的外网连接的更顺一点，所以改一下有益无害。</p>
+
+<blockquote>
+<p>比如锐速之流是不太符合公平用网的规则的，就不推荐了。Linux内置的拥塞控制算法都不会影响网络大环境，请放心使用。</p>
+</blockquote>
+
+<p>首先看一下有什么拥塞控制算法可以用：</p>
+
+<pre><code>sysctl net.ipv4.tcp_available_congestion_control
+</code></pre>
+
+<p>一般是cubic和rino，他们是默认的。</p>
+
+<p><strong>更新</strong>： 现在最为流行的拥塞控制算法变成了Google贡献的bbr算法，时代的进步真快~</p>
+
+<p>bbr算法从Linux Kernel 4.9开始内置，但是CentOS7内置的内核是3.x的，所以需要把内核换掉。</p>
+
+<p><strong>极其强调：换内核可能存在一定的潜在风险，而且可能引起依赖冲突，更换需谨慎</strong></p>
+
+<p>自己编译内核的麻烦比较多，也很慢，所幸<a href="https://elrepo.org/">ELRepo</a>提供了预先编译好的内核源，下面就以此来介绍一下如何更换内核为4.16（这个版本号是当前的mainline version）</p>
+
+<p>根据官网的介绍，先引入ELRepo源的GPG Key：</p>
+
+<pre><code class="language-shell">rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+</code></pre>
+
+<p>然后安装ELRepo源：</p>
+
+<pre><code class="language-shell">rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+</code></pre>
+
+<p>然后就可以开始安装内核包了：</p>
+
+<pre><code class="language-shell">#先更新一下
+yum update -y
+#这里可能会卸载掉很多依赖kernel-headers的包，比如gcc-c++，一定要记录下来，一会装回来
+#如果是干净安装的系统的话，这时候就没有那么多依赖会被影响，所以建议换内核要趁早
+yum remove kernel-headers kernel-tools kernel-tools-libs
+#安装新内核，这里一口气装上所有内核组件
+yum --disableexcludes=main --disablerepo=\* --enablerepo=elrepo-kernel install kernel-ml kernel-ml-devel kernel-ml-headers kernel-ml-tools kernel-ml-tools-libs kernel-ml-tools-libs-devel perf python-perf
+</code></pre>
+
+<p>因为@update源中的kernel还会继续更新，而且一旦自动更新的话会更新grub为更新的内核，所以需要禁用掉yum更新内核的功能，修改/etc/yum.conf，在[main]下面添加：</p>
+
+<pre><code class="language-shell">exclude=kernel*
+</code></pre>
+
+<p>这样以后就无法再直接使用yum进行内核的更新了，如果需要操作的话，要加上&ndash;disableexcludes=main，也就是使用上面安装的命令进行更新。</p>
+
+<p>然后让我们查看一下现在有什么内核：</p>
+
+<pre><code class="language-shell">grep &quot;^menuentry&quot; /boot/grub2/grub.cfg | cut -d &quot;'&quot; -f2
+</code></pre>
+
+<p>比如我现在就有这些：</p>
+
+<pre><code class="language-text">CentOS Linux (4.16.12-1.el7.elrepo.x86_64) 7 (Core)
+CentOS Linux (4.16.11-1.el7.elrepo.x86_64) 7 (Core)
+CentOS Linux (3.10.0-862.3.2.el7.x86_64) 7 (Core)
+CentOS Linux 7 Rescue 0997f6d10bb7477a9a48341847d72497 (3.10.0-693.2.2.el7.x86_64)
+CentOS Linux (0-rescue-96aa007d97204c57aebfaf6879824e56) 7 (Core)
+</code></pre>
+
+<p>把引导设置为刚安装的最新内核：</p>
+
+<pre><code class="language-shell">grub2-set-default 'CentOS Linux (4.16.12-1.el7.elrepo.x86_64) 7 (Core)'
+</code></pre>
+
+<p>现在可以重启了，之后用uname -a或者装逼神器<a href="https://github.com/dylanaraps/neofetch">neofetch</a>看一下内核版本，如果是刚才选中那个，那你就成功了~</p>
+
+<p>现在我们回到优化网络的话题上来，首先加载bbr拥塞控制算法的kernel mod：</p>
+
+<pre><code class="language-shell">/sbin/modprobe bbr
+</code></pre>
+
+<p>修改/etc/sysctl.conf，添加以下配置</p>
+
+<pre><code class="language-shell">net.ipv4.tcp_congestion_control=bbr
+net.core.default_qdisc=fq
+</code></pre>
+
+<p>执行sysctl -p可以让配置生效，可以考虑重启一下机器。</p>
+
+<h2 id="参考配置">参考配置</h2>
+
+<p>以下修改/etc/sysconfig/network-scripts/ifcfg-eth0，systemctl restart network生效。</p>
+
+<p>注意，修改这个设置主要适用于使用snapshot功能换机器/新增IPv6支持等情况，正常情况下服务商会配置好这个文件的。正常情况下，仅根据需求增加IPv6 Forwarding的配置即可。</p>
+
+<pre><code class="language-shell"># 设备名
+DEVICE=eth0
+# 使用DHCP获取IPv4地址，默认如此
+BOOTPROTO=dhcp
+# 开机时启动，一定不要关掉
+ONBOOT=yes
+# 以太网类型
+TYPE=Ethernet
+# 不由Network Manager控制，因为服务器在远程，这个设置一定不要修改，否则容易出现问题
+NM_CONTROLLED=no
+# 不使用ZEROCONF协议，默认如此
+NOZEROCONF=yes
+# 防火墙的zone，默认pulic，用于对外
+ZONE=public
+# 默认DNS，选Google的就行了
+DNS1=8.8.8.8
+
+# 启用IPv6
+IPV6INIT=yes
+# 启用IPv6自动配置
+IPV6_AUTOCONF=yes
+# 启用IPv6转发，这个跟下面的配置文件相关，这里不开，下面的IPv6转发就不要开，反之亦然
+IPV6FORWARDING=yes
+# IPv6 DNS，这里用的是Google的
+DNS2=2001:4860:4860::8888
+</code></pre>
+
+<p>以下需要修改/etc/sysctl.conf，sysctl -p生效。</p>
+
+<p>这里仅仅启用需要的功能，不考虑网络参数的优化，如果有那些需求，可以去拓展阅读一些运维方面的文章。</p>
+
+<pre><code class="language-shell"># 修改最大文件数量，有爬虫需求的一定把这个值改大
+fs.file-max=65535
+# 开启IPv4转发
+net.ipv4.ip_forward=1
+# IPv4拥塞控制算法使用bbr
+net.ipv4.tcp_congestion_control=bbr
+# 队列方式使用fq，匹配上面的bbr算法
+net.core.default_qdisc=fq
+# 开启IPv6 RA包转发，可能在自建6in4 Tunnel的情况下用到
+net.ipv6.conf.all.accept_ra = 2
+# 开启IPv6转发，要跟上面的网络配置相匹配
+net.ipv6.conf.all.forwarding = 1
+</code></pre>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/linux/" rel="tag">Linux</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jason Han avatar" src="/img/auther.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">作者 Jason Han</span>
+	</div>
+	<div class="authorbox__description">
+		码农 / 死宅 / 数码粉丝 / 云养猫爱好者
+	</div>
+	<div class="authorbox__description">
+		<b>文章为作者原创，转载请著名出处</b>
+	</div>
+</div>
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="/linux/days_with_vps_vol1_2/" rel="prev"><span class="post-nav__caption">«上一篇</span><p class="post-nav__post-title">从零开始的VPS生活 Vol1-2：初见CentOS7——基础安全</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="/linux/days_with_vps_vol2_1/" rel="next"><span class="post-nav__caption">上一篇»</span><p class="post-nav__post-title">从零开始的VPS生活 Vol2-1：科学上网——轻松搭建Shadowsocks服务端</p></a>
+	</div>
+</nav>
+
+	
+<div id="gitalk-container"></div>
+
+</main>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://www.baidu.com/s" target="_blank">
+		<label>
+			<span class="screen-reader-text">搜索:</span>
+			<input class="widget-search__field" type="text" placeholder="百度自定义搜索" value="" name="wd">
+		</label>
+		<input class="widget-search__submit" type="submit" value="搜索">
+		<input type="hidden" name="ct" value="noobear" />
+		<input type="hidden" name="si" value="www.noobear.com" />
+	</form>
+</div>
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_4/">从零开始的VPS生活 Vol2-4：科学上网——稳定压倒一切的v2ray</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_3/">从零开始的VPS生活 Vol2-3：科学上网——新秀Wireguard</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_2/">从零开始的VPS生活 Vol2-2：科学上网——利用Let`s Encrypt证书搭建IKEv2/IPSec VPN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/java/add_cors_rule_in_spring_boot/">为使用Spring Boot的Web应用更改CORS规则</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_1/">从零开始的VPS生活 Vol2-1：科学上网——轻松搭建Shadowsocks服务端</a></li>
+			<li class="widget__item"><a class="widget__link" href="/golang/proper_timing_for_waitgroup_add_in_goroutine/">正确地使用在多个goroutine中使用waitgroup</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol1_3/">从零开始的VPS生活 Vol1-3：初见CentOS7——网络优化</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol1_2/">从零开始的VPS生活 Vol1-2：初见CentOS7——基础安全</a></li>
+			<li class="widget__item"><a class="widget__link" href="/life/flash_for_ubuntu_1604/">为Ubuntu 16.04安装最新版Flash</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol1_1/">从零开始的VPS生活 Vol1-1：初见CentOS7——常用软件</a></li>
+		</ul>
+	</div>
+</div>
+
+	
+	
+	
+<div class="widget-taglist widget">
+	<h4 class="widget__title">标签</h4>
+	<div class="widget__content">
+		<a class="widget__link widget__link--taglist" href="/tags/centos" title="centos">centos (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/golang" title="golang">golang (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/lets-encrypt" title="lets-encrypt">lets-encrypt (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (7)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/qq" title="qq">qq (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/shadowsocks" title="shadowsocks">shadowsocks (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/spring-boot" title="spring-boot">spring-boot (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/v2ray" title="v2ray">v2ray (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/vpn" title="vpn">vpn (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/vps" title="vps">vps (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/wine" title="wine">wine (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/wireguard" title="wireguard">wireguard (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e5%9f%9f%e5%90%8d" title="域名">域名 (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e5%ae%89%e5%85%a8" title="安全">安全 (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91" title="科学上网">科学上网 (4)</a>
+	</div>
+</div>
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2019 菜鸟小熊. <span class="footer__copyright-credits">Generated by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and Hosted by </a><a href="https://www.vultr.com/?ref=6907667" rel="nofollow noopener" target="_blank">Vultr</a>.</span></p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+<script>
+var gitalk = new Gitalk({
+  clientID: "b2e19b887672d57af28f",
+  clientSecret: "43f12e5f6a46c5346fc4a3dbbd9589ea3726cf9e",
+  repo: "www.noobear.com",
+  owner: "jasonhancn",
+  admin: ["jasonhancn"],
+  id: md5(encodeURI(location.href))
+})
+gitalk.render('gitalk-container')
+</script>
+
+</body>
+</html>

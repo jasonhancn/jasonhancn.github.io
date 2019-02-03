@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lets Encrypt on 菜鸟小熊</title>
+    <link>/tags/lets-encrypt/</link>
+    <description>Recent content in Lets Encrypt on 菜鸟小熊</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 21 Jan 2018 20:37:16 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/lets-encrypt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>从零开始的VPS生活 Vol2-2：科学上网——利用Let`s Encrypt证书搭建IKEv2/IPSec VPN</title>
+      <link>/linux/days_with_vps_vol2_2/</link>
+      <pubDate>Sun, 21 Jan 2018 20:37:16 +0800</pubDate>
+      
+      <guid>/linux/days_with_vps_vol2_2/</guid>
+      <description>有着“虚拟专用网”这个名头的VPN已经很少被用于科学上网了，因为它有点小题大作的意味。而且因为其数据包的标识非常明显，也容易被ban。本文仅</description>
+    </item>
+    
+  </channel>
+</rss>

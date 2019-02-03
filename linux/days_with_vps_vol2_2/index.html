@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>从零开始的VPS生活 Vol2-2：科学上网——利用Let`s Encrypt证书搭建IKEv2/IPSec VPN</title>
+
+<meta name="generator" content="Hugo 0.36" />
+<meta property="og:title" content="从零开始的VPS生活 Vol2-2：科学上网——利用Let`s Encrypt证书搭建IKEv2/IPSec VPN" />
+<meta property="og:description" content="有着“虚拟专用网”这个名头的VPN已经很少被用于科学上网了，因为它有点小题大作的意味。而且因为其数据包的标识非常明显，也容易被ban。本文仅" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/linux/days_with_vps_vol2_2/" />
+
+
+
+<meta property="article:published_time" content="2018-01-21T20:37:16&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-01-21T20:37:16&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+<script type="text/javascript" src="/js/scripts.js"></script>
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/css/gitalk.min.css">
+<script src="/js/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="/" title="菜鸟小熊" rel="home">
+						<h1 class="logo__title">菜鸟小熊</h1>
+						<h2 class="logo__tagline">IT杂货铺</h2>
+					</a>
+				</div>
+			</div>
+			
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item"><a class="menu__link" href="/java/">JAVA开发</a></li>
+		<li class="menu__item"><a class="menu__link" href="/golang/">GO开发</a></li>
+		<li class="menu__item"><a class="menu__link" href="/linux/">LINUX运维</a></li>
+		<li class="menu__item"><a class="menu__link" href="/software/">佳软推荐</a></li>
+		<li class="menu__item"><a class="menu__link" href="/life/">极客生活</a></li>
+		<li class="menu__item"><a class="menu__link" href="/about/">关于本站</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<main class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">从零开始的VPS生活 Vol2-2：科学上网——利用Let`s Encrypt证书搭建IKEv2/IPSec VPN</h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<span><time class="post__meta-date" datetime="2018-01-21T20:37:16">2018-01-21</time></span>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/linux%e8%bf%90%e7%bb%b4" rel="category">Linux运维</a></span>
+			</p>
+		</header>
+		<div class="post__content clearfix">
+			<p>有着“虚拟专用网”这个名头的VPN已经很少被用于科学上网了，因为它有点小题大作的意味。而且因为其数据包的标识非常明显，也容易被ban。本文仅提供一个方案，让IKEv2方式的VPN能够运行起来，使用方面还请自行斟酌。</p>
+
+<p>这种类型的企业VPN，麻烦就麻烦在要用证书，自行签发的证书安装到设备上之后一直会有风险提示非常讨厌。因此，这里就要用Let`s Encrypt的HTTPS证书做一个免安装证书的VPN。</p>
+
+<blockquote>
+<p>没有域名的同学请跳过本篇。</p>
+</blockquote>
+
+<p>首先，yum安装strongswan。</p>
+
+<pre><code class="language-shell">yum install strongswan
+</code></pre>
+
+<p>其次用lnmp一键安装包（1.5以上版本）或者acme.sh申请一个子域名的https证书。</p>
+
+<p>执行以下命令，将证书连接进strongswan的配置文件：</p>
+
+<pre><code class="language-shell"># 假设域名为test.noobear.com
+# 使用原版acme.sh的情况
+acme.sh --deploy -d &quot;test.noobear.com&quot; --deploy-hook &quot;strongswan&quot;
+# 使用lnmp一键安装包内置的acme.sh的情况
+&quot;/usr/local/acme.sh&quot;/acme.sh --deploy --home &quot;/usr/local/acme.sh&quot; -d &quot;test.noobear.com&quot; --deploy-hook &quot;strongswan&quot;
+</code></pre>
+
+<p>在使用acme.sh部署一次之后，部署的过程会被记录下来，之后的acme.sh &ndash;cron在更新证书后就会自动把证书部署到strongswan了。当然，不放心的话重新执行部署语句也是可以的。</p>
+
+<p>随后修改/etc/strongswan/ipsec.conf，整个粘进去就可以了，记住修改域名为自己的域名：</p>
+
+<pre><code class="language-conf">config setup
+    uniqueids=never
+
+conn %default
+    dpdaction=clear
+    dpddelay=30s
+    dpdtimeout=60s
+    left=%defaultroute
+    leftsubnet=0.0.0.0/0
+    leftcert=test.noobear.com.cer
+    rekey=no
+    right=%any
+    rightsourceip=10.1.1.0/24
+    rightdns=8.8.8.8
+
+conn IPsecIKEv2-EAP
+    keyexchange=ikev2
+    ike=aes128-sha256-ecp256,aes256-sha384-ecp384,aes128-sha256-modp2048,aes128-sha1-modp2048,aes256-sha384-modp4096,aes256-sha256-modp4096,aes256-sha1-modp4096,aes128-sha256-modp1536,aes128-sha1-modp1536,aes256-sha384-modp2048,aes256-sha256-modp2048,aes256-sha1-modp2048,aes128-sha256-modp1024,aes128-sha1-modp1024,aes256-sha384-modp1536,aes256-sha256-modp1536,aes256-sha1-modp1536,aes256-sha384-modp1024,aes256-sha256-modp1024,aes256-sha1-modp1024!
+    esp=aes128gcm16-ecp256,aes256gcm16-ecp384,aes128-sha256-ecp256,aes256-sha384-ecp384,aes128-sha256-modp2048,aes128-sha1-modp2048,aes256-sha384-modp4096,aes256-sha256-modp4096,aes256-sha1-modp4096,aes128-sha256-modp1536,aes128-sha1-modp1536,aes256-sha384-modp2048,aes256-sha256-modp2048,aes256-sha1-modp2048,aes128-sha256-modp1024,aes128-sha1-modp1024,aes256-sha384-modp1536,aes256-sha256-modp1536,aes256-sha1-modp1536,aes256-sha384-modp1024,aes256-sha256-modp1024,aes256-sha1-modp1024,aes128gcm16,aes256gcm16,aes128-sha256,aes128-sha1,aes256-sha384,aes256-sha256,aes256-sha1!
+    eap_identity=%any
+    fragmentation=yes
+    leftsendcert=always
+    leftid=test.noobear.com
+    leftauth=pubkey
+    rightauth=eap-mschapv2
+    rightsendcert=never
+    auto=add
+</code></pre>
+
+<blockquote>
+<p>本来这里是有IKEv1-IPsec的设置的，但是因为日志中出现了大量的错误链接日志，怀疑有人对网段中这种协议进行批量扫描和破解，为了安全起见，这里仅保留IKEv2的相关设置。同时，强烈不建议使用这种方式进行科学上网。</p>
+</blockquote>
+
+<p>如果想通过vpn访问IPv6网络，可以在rightip中为vpn划分一个子网，这样就能通过vpn实现IPv6链接了。</p>
+
+<pre><code class="language-conf"># 前面4段IP地址替换成自己的/64地址，后面可以自行选择子网的IP，如果你不懂IPv6子网划分的话，照抄也可以
+rightsourceip=10.6.6.0/24,2001:19f0:aaaa:aaaa:1:1::/96
+# 如果需要的话，加上IPv6 DNS也是可以的，下面是Google IPv6 DNS
+rightdns=8.8.8.8,2001:4860:4860::8888
+</code></pre>
+
+<p>修改/etc/strongswan/strongswan.conf：</p>
+
+<pre><code class="language-conf">charon {
+    load_modular = yes
+    plugins {
+        include strongswan.d/charon/*.conf
+    }
+    duplicheck {
+        enable = no
+    }
+    compress = yes
+    dns1 = 8.8.8.8
+    dns2 = 8.8.4.4
+    nbns1 = 8.8.8.8
+    nbns2 = 8.8.4.4
+}
+
+include strongswan.d/*.conf
+</code></pre>
+
+<p>修改/etc/strongswan/ipsec.secrets，可以自行更改密码，用户名均忽略，连接时随便编一个即可：</p>
+
+<pre><code class="language-conf">: RSA test.noobear.com.key
+%any %any : EAP &quot;password_eap&quot;
+</code></pre>
+
+<p>这样，可以做到兼容Android，iOS，Windows和Mac设备。忽略用户名也是兼容性的考虑。</p>
+
+<p>最后开放防火墙的转发和对应端口</p>
+
+<pre><code class="language-shell">firewall-cmd --permanent --add-masquerade
+firewall-cmd --permanent --add-port=500/udp
+firewall-cmd --permanent --add-port=4500/udp
+firewall-cmd --reload
+</code></pre>
+
+<hr />
+
+<p>以上面的配置距离，配置设备如下：</p>
+
+<p>iOS选择IKEv2，安卓Strongswan APP:</p>
+
+<ul>
+<li><p>Server：test.noobear.com</p></li>
+
+<li><p>Remote ID：test.noobear.com</p></li>
+
+<li><p>Username：随便输</p></li>
+
+<li><p>Password：password_eap</p></li>
+</ul>
+
+<p>Windows选择IKEv2：</p>
+
+<ul>
+<li><p>服务器名称或地址：test.noobear.com</p></li>
+
+<li><p>用户名：随便输</p></li>
+
+<li><p>密码：password_eap</p></li>
+</ul>
+
+<blockquote>
+<p>注意：Windows要在“适配器选项”-“你的VPN名字”-“属性”-“网络”-“Internet 协议版本4”-“高级”里选中“在远程网络上使用默认网关”，才能正常访问网络。</p>
+</blockquote>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="tag">科学上网</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/vpn/" rel="tag">VPN</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/lets-encrypt/" rel="tag">Let`s Encrypt</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jason Han avatar" src="/img/auther.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">作者 Jason Han</span>
+	</div>
+	<div class="authorbox__description">
+		码农 / 死宅 / 数码粉丝 / 云养猫爱好者
+	</div>
+	<div class="authorbox__description">
+		<b>文章为作者原创，转载请著名出处</b>
+	</div>
+</div>
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="/linux/days_with_vps_vol2_1/" rel="prev"><span class="post-nav__caption">«上一篇</span><p class="post-nav__post-title">从零开始的VPS生活 Vol2-1：科学上网——轻松搭建Shadowsocks服务端</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="/linux/days_with_vps_vol2_3/" rel="next"><span class="post-nav__caption">上一篇»</span><p class="post-nav__post-title">从零开始的VPS生活 Vol2-3：科学上网——新秀Wireguard</p></a>
+	</div>
+</nav>
+
+	
+<div id="gitalk-container"></div>
+
+</main>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://www.baidu.com/s" target="_blank">
+		<label>
+			<span class="screen-reader-text">搜索:</span>
+			<input class="widget-search__field" type="text" placeholder="百度自定义搜索" value="" name="wd">
+		</label>
+		<input class="widget-search__submit" type="submit" value="搜索">
+		<input type="hidden" name="ct" value="noobear" />
+		<input type="hidden" name="si" value="www.noobear.com" />
+	</form>
+</div>
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_4/">从零开始的VPS生活 Vol2-4：科学上网——稳定压倒一切的v2ray</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_3/">从零开始的VPS生活 Vol2-3：科学上网——新秀Wireguard</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_2/">从零开始的VPS生活 Vol2-2：科学上网——利用Let`s Encrypt证书搭建IKEv2/IPSec VPN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/java/add_cors_rule_in_spring_boot/">为使用Spring Boot的Web应用更改CORS规则</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_1/">从零开始的VPS生活 Vol2-1：科学上网——轻松搭建Shadowsocks服务端</a></li>
+			<li class="widget__item"><a class="widget__link" href="/golang/proper_timing_for_waitgroup_add_in_goroutine/">正确地使用在多个goroutine中使用waitgroup</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol1_3/">从零开始的VPS生活 Vol1-3：初见CentOS7——网络优化</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol1_2/">从零开始的VPS生活 Vol1-2：初见CentOS7——基础安全</a></li>
+			<li class="widget__item"><a class="widget__link" href="/life/flash_for_ubuntu_1604/">为Ubuntu 16.04安装最新版Flash</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol1_1/">从零开始的VPS生活 Vol1-1：初见CentOS7——常用软件</a></li>
+		</ul>
+	</div>
+</div>
+
+	
+	
+	
+<div class="widget-taglist widget">
+	<h4 class="widget__title">标签</h4>
+	<div class="widget__content">
+		<a class="widget__link widget__link--taglist" href="/tags/centos" title="centos">centos (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/golang" title="golang">golang (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/lets-encrypt" title="lets-encrypt">lets-encrypt (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (7)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/qq" title="qq">qq (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/shadowsocks" title="shadowsocks">shadowsocks (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/spring-boot" title="spring-boot">spring-boot (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/v2ray" title="v2ray">v2ray (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/vpn" title="vpn">vpn (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/vps" title="vps">vps (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/wine" title="wine">wine (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/wireguard" title="wireguard">wireguard (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e5%9f%9f%e5%90%8d" title="域名">域名 (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e5%ae%89%e5%85%a8" title="安全">安全 (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91" title="科学上网">科学上网 (4)</a>
+	</div>
+</div>
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2019 菜鸟小熊. <span class="footer__copyright-credits">Generated by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and Hosted by </a><a href="https://www.vultr.com/?ref=6907667" rel="nofollow noopener" target="_blank">Vultr</a>.</span></p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+<script>
+var gitalk = new Gitalk({
+  clientID: "b2e19b887672d57af28f",
+  clientSecret: "43f12e5f6a46c5346fc4a3dbbd9589ea3726cf9e",
+  repo: "www.noobear.com",
+  owner: "jasonhancn",
+  admin: ["jasonhancn"],
+  id: md5(encodeURI(location.href))
+})
+gitalk.render('gitalk-container')
+</script>
+
+</body>
+</html>

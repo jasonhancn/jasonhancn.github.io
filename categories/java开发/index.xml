@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java开发 on 菜鸟小熊</title>
+    <link>/categories/java%E5%BC%80%E5%8F%91/</link>
+    <description>Recent content in Java开发 on 菜鸟小熊</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 11 Feb 2018 21:08:44 +0800</lastBuildDate>
+    
+	<atom:link href="/categories/java%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java开发</title>
+      <link>/java/</link>
+      <pubDate>Sun, 11 Feb 2018 21:08:44 +0800</pubDate>
+      
+      <guid>/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>为使用Spring Boot的Web应用更改CORS规则</title>
+      <link>/java/add_cors_rule_in_spring_boot/</link>
+      <pubDate>Mon, 18 Dec 2017 00:22:17 +0800</pubDate>
+      
+      <guid>/java/add_cors_rule_in_spring_boot/</guid>
+      <description>写接口的时候一直要配置HTTP header中的CORS规则来控制跨域调用，之前在直接使用Servlet的时候都是直接修改，现在改用Sprin</description>
+    </item>
+    
+  </channel>
+</rss>

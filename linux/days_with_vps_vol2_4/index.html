@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>从零开始的VPS生活 Vol2-4：科学上网——稳定压倒一切的v2ray</title>
+
+<meta name="generator" content="Hugo 0.36" />
+<meta property="og:title" content="从零开始的VPS生活 Vol2-4：科学上网——稳定压倒一切的v2ray" />
+<meta property="og:description" content="v2ray是一个更nerd的科学上网工具，论好用，它不及ss的丰富“产业链”（官网原话），但是因为它的数据包载体更加灵活，所以用它作为一个稳" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/linux/days_with_vps_vol2_4/" />
+
+
+
+<meta property="article:published_time" content="2019-01-26T20:37:16&#43;08:00"/>
+
+<meta property="article:modified_time" content="2019-01-26T20:37:16&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+<script type="text/javascript" src="/js/scripts.js"></script>
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/css/gitalk.min.css">
+<script src="/js/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="/" title="菜鸟小熊" rel="home">
+						<h1 class="logo__title">菜鸟小熊</h1>
+						<h2 class="logo__tagline">IT杂货铺</h2>
+					</a>
+				</div>
+			</div>
+			
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item"><a class="menu__link" href="/java/">JAVA开发</a></li>
+		<li class="menu__item"><a class="menu__link" href="/golang/">GO开发</a></li>
+		<li class="menu__item"><a class="menu__link" href="/linux/">LINUX运维</a></li>
+		<li class="menu__item"><a class="menu__link" href="/software/">佳软推荐</a></li>
+		<li class="menu__item"><a class="menu__link" href="/life/">极客生活</a></li>
+		<li class="menu__item"><a class="menu__link" href="/about/">关于本站</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<main class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">从零开始的VPS生活 Vol2-4：科学上网——稳定压倒一切的v2ray</h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<span><time class="post__meta-date" datetime="2019-01-26T20:37:16">2019-01-26</time></span>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/linux%e8%bf%90%e7%bb%b4" rel="category">Linux运维</a></span>
+			</p>
+		</header>
+		<div class="post__content clearfix">
+			
+
+<p>v2ray是一个更nerd的科学上网工具，论好用，它不及ss的丰富“产业链”（官网原话），但是因为它的数据包载体更加灵活，所以用它作为一个稳定的备胎是非常实际且有效的。</p>
+
+<p>v2ray的设置极为丰（复）富（杂），本文只是给出一种偏重于稳定的设置方案，如有其他需求，可以自行研究，官网上有足够详细的资料。由于这种方案延迟极高，适用场景主要在于作为科学上网手段的应急备份，以及对延迟要求不高的视频场景（看直播/高码率视频的稳定性优于其他工具，只要连上了就基本不会断连），看网页的话会非常不爽。</p>
+
+<p>本文采用的方案为websocket——tls——cdn。由v2ray-core提供接口，nginx作为反向代理，cloudflare作为cdn（你也可以选择其他免费的或者收费的cdn，物理距离近（如香港/韩国）的话可以显著降低延迟）</p>
+
+<blockquote>
+<p>本文假定读者已经能够顺利安装nginx，创建虚拟主机，了解在何处修改虚拟主机的配置文件，且能够使用acme.sh生成证书并将其配置在nginx的https配置中。
+如果学习上述内容有困难，建议使用lnmp.org的一键安装包，在安装过程中不安装MySQL并在安装后调低php-fpm的worker数量。即可享受其提供的“lnmp”cli工具的便利。
+本文同样假定读者已经拥有使用公共服务商的cdn服务设置网站的cdn的能力，总之这篇文章并不面向新手</p>
+</blockquote>
+
+<h2 id="安装">安装</h2>
+
+<p>由于官方没有提供软件源安装的方案，所以这里采用官方的一键安装脚本：</p>
+
+<pre><code class="language-shell">bash &lt;(curl -L -s https://install.direct/go.sh)
+</code></pre>
+
+<h2 id="配置v2ray">配置v2ray</h2>
+
+<p>编辑/etc/v2ray/config.json，填入以下内容：</p>
+
+<pre><code class="language-json">{
+    &quot;inbounds&quot;: [{
+        &quot;port&quot;: 10010,
+        &quot;listen&quot;: &quot;127.0.0.1&quot;,
+        &quot;protocol&quot;: &quot;vmess&quot;,
+        &quot;settings&quot;: {
+            &quot;clients&quot;: [{
+                    &quot;id&quot;: &quot;7742f2cd-aaaa-bbbb-cccc-66ed3025ef61&quot;,
+                    &quot;alterId&quot;: 64
+                },
+                {
+                    &quot;id&quot;: &quot;1001478b-dddd-eeee-ffff-7629b9c8d3e3&quot;,
+                    &quot;alterId&quot;: 64
+                }
+            ]
+        },
+        &quot;streamSettings&quot;: {
+            &quot;network&quot;: &quot;ws&quot;,
+            &quot;wsSettings&quot;: {
+                &quot;path&quot;: &quot;/download&quot;
+            }
+        }
+    }],
+    &quot;outbounds&quot;: [{
+        &quot;protocol&quot;: &quot;freedom&quot;,
+        &quot;settings&quot;: {}
+    }, {
+        &quot;protocol&quot;: &quot;blackhole&quot;,
+        &quot;settings&quot;: {},
+        &quot;tag&quot;: &quot;blocked&quot;
+    }],
+    &quot;routing&quot;: {
+        &quot;rules&quot;: [{
+            &quot;type&quot;: &quot;field&quot;,
+            &quot;ip&quot;: [&quot;geoip:private&quot;],
+            &quot;outboundTag&quot;: &quot;blocked&quot;
+        }]
+    }
+}
+</code></pre>
+
+<p>这里要改的地方：</p>
+
+<ul>
+<li><p>Clients的ID，这里填写随机生成的UUID，相当于ss的密码，记住一定要去生成一个新的自用。比如使用<a href="https://www.uuidgenerator.net">这个</a>。</p></li>
+
+<li><p>Client的数量可以任意添加，应该保证一个设备一个，方便区分。</p></li>
+
+<li><p>wsSettings.path，这里可以任意填写，记住跟下面的nginx配置中相同。</p></li>
+
+<li><p>port端口，防火墙不要开放这个端口给外部，nginx内网访问就足够了。</p></li>
+</ul>
+
+<p>然后启动即可：</p>
+
+<pre><code class="language-shell">systemctl start v2ray
+systemctl enable v2ray
+</code></pre>
+
+<h2 id="配置nginx">配置nginx</h2>
+
+<p>nginx怎么安装，启用，建立虚拟主机，我就不在这讲了，这部分用caddy或者其他什么东西都是可以的。</p>
+
+<p>这里使用的域名是download.noobear.com（实际上不存在），需要换成自己的域名。例子修改自lnmp一键安装包生成的虚拟主机配置。</p>
+
+<pre><code class="language-conf">server
+    {
+        listen 80;
+        listen [::]:80;
+        server_name download.noobear.com ;
+        index index.html index.htm index.php default.html default.htm default.php;
+        root  /home/wwwroot/download.noobear.com;
+
+        # 这是acme.sh续期证书时使用的部分
+        location ~ /.well-known {
+            allow all;
+        }
+
+        # 禁止访问任何隐藏文件
+        location ~ /\.
+        {
+            deny all;
+        }
+
+        # 把所有http请求转化为https的
+        location ~ /
+        {
+            rewrite ^(.*)$  https://$host$1 permanent;
+        }
+
+        access_log off;
+    }
+
+server
+    {
+        listen 443 ssl http2;
+        listen [::]:443 ssl http2;
+        server_name download.noobear.com ;
+        index index.html index.htm index.php default.html default.htm default.php;
+
+        # 配置https需要的证书和加密方式
+        ssl on;
+        ssl_certificate /usr/local/nginx/conf/ssl/download.noobear.com/fullchain.cer;
+        ssl_certificate_key /usr/local/nginx/conf/ssl/download.noobear.com/download.noobear.com.key;
+        ssl_session_timeout 5m;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_prefer_server_ciphers on;
+        ssl_ciphers &quot;EECDH+CHACHA20:EECDH+CHACHA20-draft:EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5&quot;;
+        ssl_session_cache builtin:1000 shared:SSL:10m;
+        ssl_dhparam /usr/local/nginx/conf/ssl/dhparam.pem;
+
+        # 这条是lnmp一键安装包生成的不使用重写规则的条目
+        include rewrite/none.conf;
+
+        # 这是acme.sh续期证书时使用的部分
+        location ~ /.well-known {
+            allow all;
+        }
+
+        # 这是最关键的部分，端口要和上面一致
+        location /download {
+            proxy_redirect off;
+            proxy_pass http://127.0.0.1:10010;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection &quot;upgrade&quot;;
+            proxy_set_header Host $http_host;
+        }
+
+        # 不使用连接日志
+        access_log off;
+    }
+</code></pre>
+
+<h2 id="配置cdn">配置CDN</h2>
+
+<p>cdn配置，各服务商各异，重点在于将download.noobear.com（示例地址）经由cdn进行连接。这样同时有助于保护服务器本身的IP。</p>
+
+<h2 id="客户端参数">客户端参数</h2>
+
+<p>这里的参数项翻译采用Windows上的V2RayW版本，其他版本客户端请自行对照填入。</p>
+
+<ul>
+<li>主inbound：http</li>
+<li>服务器地址：download.noobear.com:443</li>
+<li>User ID：7742f2cd-aaaa-bbbb-cccc-66ed3025ef61（或任意一个自定义的ID）</li>
+<li>alterID：64</li>
+<li>加密协议：默认</li>
+<li>网络：ws（WebSocket）</li>
+<li>传输设置-WebSocket-Path：/download（上面设置的）</li>
+<li>传输设置-WebSocket-Headers：（留空）</li>
+<li>传输设置-TLS-启用：是</li>
+<li>传输设置-TLS-允许非安全：否</li>
+<li>传输设置-TLS-serverName：download.noobear.com</li>
+</ul>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="tag">科学上网</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/v2ray/" rel="tag">v2ray</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jason Han avatar" src="/img/auther.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">作者 Jason Han</span>
+	</div>
+	<div class="authorbox__description">
+		码农 / 死宅 / 数码粉丝 / 云养猫爱好者
+	</div>
+	<div class="authorbox__description">
+		<b>文章为作者原创，转载请著名出处</b>
+	</div>
+</div>
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="/linux/days_with_vps_vol2_3/" rel="prev"><span class="post-nav__caption">«上一篇</span><p class="post-nav__post-title">从零开始的VPS生活 Vol2-3：科学上网——新秀Wireguard</p></a>
+	</div>
+</nav>
+
+	
+<div id="gitalk-container"></div>
+
+</main>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://www.baidu.com/s" target="_blank">
+		<label>
+			<span class="screen-reader-text">搜索:</span>
+			<input class="widget-search__field" type="text" placeholder="百度自定义搜索" value="" name="wd">
+		</label>
+		<input class="widget-search__submit" type="submit" value="搜索">
+		<input type="hidden" name="ct" value="noobear" />
+		<input type="hidden" name="si" value="www.noobear.com" />
+	</form>
+</div>
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_4/">从零开始的VPS生活 Vol2-4：科学上网——稳定压倒一切的v2ray</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_3/">从零开始的VPS生活 Vol2-3：科学上网——新秀Wireguard</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_2/">从零开始的VPS生活 Vol2-2：科学上网——利用Let`s Encrypt证书搭建IKEv2/IPSec VPN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/java/add_cors_rule_in_spring_boot/">为使用Spring Boot的Web应用更改CORS规则</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_1/">从零开始的VPS生活 Vol2-1：科学上网——轻松搭建Shadowsocks服务端</a></li>
+			<li class="widget__item"><a class="widget__link" href="/golang/proper_timing_for_waitgroup_add_in_goroutine/">正确地使用在多个goroutine中使用waitgroup</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol1_3/">从零开始的VPS生活 Vol1-3：初见CentOS7——网络优化</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol1_2/">从零开始的VPS生活 Vol1-2：初见CentOS7——基础安全</a></li>
+			<li class="widget__item"><a class="widget__link" href="/life/flash_for_ubuntu_1604/">为Ubuntu 16.04安装最新版Flash</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol1_1/">从零开始的VPS生活 Vol1-1：初见CentOS7——常用软件</a></li>
+		</ul>
+	</div>
+</div>
+
+	
+	
+	
+<div class="widget-taglist widget">
+	<h4 class="widget__title">标签</h4>
+	<div class="widget__content">
+		<a class="widget__link widget__link--taglist" href="/tags/centos" title="centos">centos (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/golang" title="golang">golang (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/lets-encrypt" title="lets-encrypt">lets-encrypt (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (7)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/qq" title="qq">qq (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/shadowsocks" title="shadowsocks">shadowsocks (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/spring-boot" title="spring-boot">spring-boot (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/v2ray" title="v2ray">v2ray (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/vpn" title="vpn">vpn (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/vps" title="vps">vps (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/wine" title="wine">wine (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/wireguard" title="wireguard">wireguard (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e5%9f%9f%e5%90%8d" title="域名">域名 (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e5%ae%89%e5%85%a8" title="安全">安全 (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91" title="科学上网">科学上网 (4)</a>
+	</div>
+</div>
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2019 菜鸟小熊. <span class="footer__copyright-credits">Generated by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and Hosted by </a><a href="https://www.vultr.com/?ref=6907667" rel="nofollow noopener" target="_blank">Vultr</a>.</span></p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+<script>
+var gitalk = new Gitalk({
+  clientID: "b2e19b887672d57af28f",
+  clientSecret: "43f12e5f6a46c5346fc4a3dbbd9589ea3726cf9e",
+  repo: "www.noobear.com",
+  owner: "jasonhancn",
+  admin: ["jasonhancn"],
+  id: md5(encodeURI(location.href))
+})
+gitalk.render('gitalk-container')
+</script>
+
+</body>
+</html>

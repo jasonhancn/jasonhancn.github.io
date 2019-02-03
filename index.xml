@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>菜鸟小熊</title>
+    <link>/</link>
+    <description>Recent content on 菜鸟小熊</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 26 Jan 2019 20:37:16 +0800</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>从零开始的VPS生活 Vol2-4：科学上网——稳定压倒一切的v2ray</title>
+      <link>/linux/days_with_vps_vol2_4/</link>
+      <pubDate>Sat, 26 Jan 2019 20:37:16 +0800</pubDate>
+      
+      <guid>/linux/days_with_vps_vol2_4/</guid>
+      <description>v2ray是一个更nerd的科学上网工具，论好用，它不及ss的丰富“产业链”（官网原话），但是因为它的数据包载体更加灵活，所以用它作为一个稳</description>
+    </item>
+    
+    <item>
+      <title>从零开始的VPS生活 Vol2-3：科学上网——新秀Wireguard</title>
+      <link>/linux/days_with_vps_vol2_3/</link>
+      <pubDate>Thu, 17 Jan 2019 20:37:16 +0800</pubDate>
+      
+      <guid>/linux/days_with_vps_vol2_3/</guid>
+      <description>Wireguard是VPN业界的新秀，它只专注于一件事情，就是把两台机器链接起来，其他的都不是它去考虑的问题。同样，这里不建议使用这种数据包</description>
+    </item>
+    
+    <item>
+      <title>从零开始的VPS生活 Vol2-2：科学上网——利用Let`s Encrypt证书搭建IKEv2/IPSec VPN</title>
+      <link>/linux/days_with_vps_vol2_2/</link>
+      <pubDate>Sun, 21 Jan 2018 20:37:16 +0800</pubDate>
+      
+      <guid>/linux/days_with_vps_vol2_2/</guid>
+      <description>有着“虚拟专用网”这个名头的VPN已经很少被用于科学上网了，因为它有点小题大作的意味。而且因为其数据包的标识非常明显，也容易被ban。本文仅</description>
+    </item>
+    
+    <item>
+      <title>为使用Spring Boot的Web应用更改CORS规则</title>
+      <link>/java/add_cors_rule_in_spring_boot/</link>
+      <pubDate>Mon, 18 Dec 2017 00:22:17 +0800</pubDate>
+      
+      <guid>/java/add_cors_rule_in_spring_boot/</guid>
+      <description>写接口的时候一直要配置HTTP header中的CORS规则来控制跨域调用，之前在直接使用Servlet的时候都是直接修改，现在改用Sprin</description>
+    </item>
+    
+    <item>
+      <title>从零开始的VPS生活 Vol2-1：科学上网——轻松搭建Shadowsocks服务端</title>
+      <link>/linux/days_with_vps_vol2_1/</link>
+      <pubDate>Sun, 10 Dec 2017 21:37:06 +0800</pubDate>
+      
+      <guid>/linux/days_with_vps_vol2_1/</guid>
+      <description>shadowsocks大名鼎鼎，是什么、怎么用我就不说了，外事用Google。 一键包很多，但是我个人很喜欢用官方的方法安装，这样更容易更新。</description>
+    </item>
+    
+    <item>
+      <title>正确地使用在多个goroutine中使用waitgroup</title>
+      <link>/golang/proper_timing_for_waitgroup_add_in_goroutine/</link>
+      <pubDate>Sun, 25 Jun 2017 19:49:09 +0800</pubDate>
+      
+      <guid>/golang/proper_timing_for_waitgroup_add_in_goroutine/</guid>
+      <description>在使用waitgroup等待goroutine执行完成的时候，遇到了这样一个问题，有很多goroutine没有执行完成，程序就退出了。 我的代</description>
+    </item>
+    
+    <item>
+      <title>从零开始的VPS生活 Vol1-3：初见CentOS7——网络优化</title>
+      <link>/linux/days_with_vps_vol1_3/</link>
+      <pubDate>Tue, 03 Jan 2017 20:36:14 +0800</pubDate>
+      
+      <guid>/linux/days_with_vps_vol1_3/</guid>
+      <description>抽出好IP IP是开奖开出来的，第一篇我就写过。开奖就是建机器，测试IP，不好就删了再建。 在这里再强调一点，一定要找一个百度、Google、C</description>
+    </item>
+    
+    <item>
+      <title>从零开始的VPS生活 Vol1-2：初见CentOS7——基础安全</title>
+      <link>/linux/days_with_vps_vol1_2/</link>
+      <pubDate>Mon, 21 Nov 2016 23:36:52 +0800</pubDate>
+      
+      <guid>/linux/days_with_vps_vol1_2/</guid>
+      <description>建立一台新的虚拟机，兴致勃勃地登上去，结果发现已经有几十上百次错误密码登录的记录&amp;hellip;没办法，总有一些人想借这种手段，完成他们不可</description>
+    </item>
+    
+    <item>
+      <title>为Ubuntu 16.04安装最新版Flash</title>
+      <link>/life/flash_for_ubuntu_1604/</link>
+      <pubDate>Thu, 08 Sep 2016 16:29:02 +0800</pubDate>
+      
+      <guid>/life/flash_for_ubuntu_1604/</guid>
+      <description>最近最扯淡的新闻是什么？不是iphone7取消3.5接口，而是Adobe宣布Linux版Flash复出！ 啊逗比诶，停更的时候版本才11喂，真</description>
+    </item>
+    
+    <item>
+      <title>从零开始的VPS生活 Vol1-1：初见CentOS7——常用软件</title>
+      <link>/linux/days_with_vps_vol1_1/</link>
+      <pubDate>Tue, 06 Sep 2016 15:50:18 +0800</pubDate>
+      
+      <guid>/linux/days_with_vps_vol1_1/</guid>
+      <description>几乎所有的个人服务器都安装的Linux系统，为什么？ ——不要钱。 这只是Linux众多优点的其中之一。开源为Linux带来了众多无需付费的社区</description>
+    </item>
+    
+    <item>
+      <title>从零开始的VPS生活 Vol0：如何花掉你的钱</title>
+      <link>/linux/days_with_vps_vol0/</link>
+      <pubDate>Fri, 02 Sep 2016 22:43:09 +0800</pubDate>
+      
+      <guid>/linux/days_with_vps_vol0/</guid>
+      <description>屯了超级久的VPS入门系列，基本上就是我自己折腾历程的记录，干货充足。 序言 对于广大码农和准码农群体，有台可以任凭差遣的服务器可谓美事一桩。这</description>
+    </item>
+    
+    <item>
+      <title>Linux桌面福音，Longene QQ（附改轻聊版方法）</title>
+      <link>/software/longene_qq_light/</link>
+      <pubDate>Sat, 27 Aug 2016 20:22:10 +0800</pubDate>
+      
+      <guid>/software/longene_qq_light/</guid>
+      <description>2017补充，QQ轻聊版已经被TIM取代了，由于Deepin的贡献，wine QQ现在已经有了很多更好的方案，同时crossover也提供了可</description>
+    </item>
+    
+    <item>
+      <title>彻底删除Wine</title>
+      <link>/life/remove_wine/</link>
+      <pubDate>Fri, 15 Jul 2016 12:10:41 +0800</pubDate>
+      
+      <guid>/life/remove_wine/</guid>
+      <description>在半年前的某一天，脑子不知道哪根弦抽了，想给Linux上装个115浏览器下东西，然后就想到了Wine。 说道做到，sudo apt -install wine（Xub</description>
+    </item>
+    
+    <item>
+      <title>解决Xfce桌面图标文字重影的问题</title>
+      <link>/life/solve_xfce_icon_text_align_problem/</link>
+      <pubDate>Sat, 02 Jul 2016 11:15:30 +0800</pubDate>
+      
+      <guid>/life/solve_xfce_icon_text_align_problem/</guid>
+      <description>自从把自用的Linux桌面系统换成了Xubuntu，腰不酸了，腿不疼了，敲代码都更有劲了。 不过，在某次改了桌面设定（具体改了啥还忘了）之后，</description>
+    </item>
+    
+  </channel>
+</rss>

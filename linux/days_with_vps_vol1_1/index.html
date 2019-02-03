@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>从零开始的VPS生活 Vol1-1：初见CentOS7——常用软件</title>
+
+<meta name="generator" content="Hugo 0.36" />
+<meta property="og:title" content="从零开始的VPS生活 Vol1-1：初见CentOS7——常用软件" />
+<meta property="og:description" content="几乎所有的个人服务器都安装的Linux系统，为什么？ ——不要钱。 这只是Linux众多优点的其中之一。开源为Linux带来了众多无需付费的社区" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/linux/days_with_vps_vol1_1/" />
+
+
+
+<meta property="article:published_time" content="2016-09-06T15:50:18&#43;08:00"/>
+
+<meta property="article:modified_time" content="2016-09-06T15:50:18&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+<script type="text/javascript" src="/js/scripts.js"></script>
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/css/gitalk.min.css">
+<script src="/js/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="/" title="菜鸟小熊" rel="home">
+						<h1 class="logo__title">菜鸟小熊</h1>
+						<h2 class="logo__tagline">IT杂货铺</h2>
+					</a>
+				</div>
+			</div>
+			
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item"><a class="menu__link" href="/java/">JAVA开发</a></li>
+		<li class="menu__item"><a class="menu__link" href="/golang/">GO开发</a></li>
+		<li class="menu__item"><a class="menu__link" href="/linux/">LINUX运维</a></li>
+		<li class="menu__item"><a class="menu__link" href="/software/">佳软推荐</a></li>
+		<li class="menu__item"><a class="menu__link" href="/life/">极客生活</a></li>
+		<li class="menu__item"><a class="menu__link" href="/about/">关于本站</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<main class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">从零开始的VPS生活 Vol1-1：初见CentOS7——常用软件</h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<span><time class="post__meta-date" datetime="2016-09-06T15:50:18">2016-09-06</time></span>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/linux%e8%bf%90%e7%bb%b4" rel="category">Linux运维</a></span>
+			</p>
+		</header>
+		<div class="post__content clearfix">
+			
+
+<p>几乎所有的个人服务器都安装的Linux系统，为什么？ ——不要钱。</p>
+
+<p>这只是Linux众多优点的其中之一。开源为Linux带来了众多无需付费的社区发行版，也让它极易定制，可以运行在各种各样的设备上，让云服务商能以极低的价格像我们提供廉价的虚拟机服务。</p>
+
+<p>用最俗气的说法，因为Linux不要钱，所以有很多人使用它；因为用很多人使用它，所以产生了很多实用的资料来参考；因为有许多参考资料，所以后续的使用者的门槛就更低&hellip;一个良性循环。</p>
+
+<p>我自己的选择同样是使用Linux系统，发行版选择了CentOS7。</p>
+
+<hr />
+
+<h2 id="为什么是centos">为什么是CentOS</h2>
+
+<p>CentOS这个名字可能不是很耳熟，但是说到红帽，很多人就知道了。而CentOS，就是Redhat Enterprise Linux（RHEL）的社区版本，实际上它只是RHEL去掉了版权内容（比如红帽的Logo），并且不能享受红帽的企业级服务而已。</p>
+
+<p>对于个人用户，它拥有的众多二进制软件包和极为丰富的支持文档让它成为了非常有吸引力的选择。当然，选择并不止一个，还有Ubuntu、openSUSE等等众多优秀的发行版，不过它们就不是这个系列的讨论内容了。</p>
+
+<hr />
+
+<p>CentOS7，目前CentOS的主流支持版本，它具备什么特性呢？</p>
+
+<ul>
+<li><p>首先，它是Linux，它能实现一个Linux应该具备的所有功能。</p></li>
+
+<li><p>它使用systemd来管理系统，所以系统操作通常使用systemctl命令</p></li>
+
+<li><p>它使用firewalld作为防火墙管理工具，它更加灵活，但是能找到的资料要少一些</p></li>
+
+<li><p>它一如既往地使用rpm进行包管理，能够获得数量众多的以rpm格式分发的软件包</p></li>
+
+<li><p>它仍然使用yum作为软件包管理的前端，并没有使用更加新潮的“dnf”（当然，你可以手动安装dnf/yum4）</p></li>
+
+<li><p>它是完全开源、自由的，以至于默认不带有第三方软件源，你可以自行添加</p></li>
+</ul>
+
+<p>关于systemctl、firewall-cmd等控制命令涉及的服务设置和防火墙设置，本系列暂且不做详细的介绍，这些操作的具体意义建议参阅一些入门文章辅助理解。</p>
+
+<p>P.S. 本系列使用了Vultr定制的CentOS 7，相对于minimal版本，它预装了大量实用的软件包，因此如果遇到操作上的差异，还是要多多动手解决来积累经验。</p>
+
+<blockquote>
+<p>RHEL 8 Beta已经发布，它对减少我们的准备工作的帮助非常大，等待CentOS 8发布之后，这里也会及时跟进。</p>
+</blockquote>
+
+<hr />
+
+<h2 id="ssh连接工具xshell">SSH连接工具Xshell</h2>
+
+<p>最初，我是喜欢使用Putty进行SSH连接的，它比较简单，体积小，还是开源的。不过用着用着，还是有一些不顺心的地方，比如它是多窗口的而不是多标签页的，不能记住密码等&hellip;因此，我又尝试了一些其他的工具，直到我遇到了Xshell。</p>
+
+<p><strong>注意：</strong> Xshell只对家庭和教育用户免费，因此如果你想在商业环境下使用（比如你的Windows使用域账号登录），请购买商用版。</p>
+
+<p>Xshell自带简体中文，因此在使用上没有什么好说的，照用就是，我想说几个小细节。</p>
+
+<ul>
+<li><p>Xshell有很多好看的配色方案，可以在<a href="https://github.com/AlphaLiu/XShellColorSchemes">这里</a>下载。配色方案中我最推荐Tomorrow，VSCode上也在用。</p></li>
+
+<li><p>Xshell也可以像SecureCRT一样选中复制，右键粘贴，在”选项-键盘与鼠标“里，你可以找到这些设置。</p></li>
+
+<li><p>默认的控制台外观设置只对未来新建的连接生效，所以如果你已经创建了连接，修改字体字号还需要单独修改现有连接。</p></li>
+
+<li><p>对一个连接，可以设置登录脚本，比如登录上之后自动ssh到另一台机器之类的（还可以用来填写密码区域），对于登录跳板机一类的情况非常实用。</p></li>
+
+<li><p><strong>Xshell 6</strong>中，增加了CJK字体的设置，也就是如果你的基础英文字体不包中日韩文的时候，你可以设置一种字体来配合使用。同时，我推荐<a href="https://github.com/be5invis/Sarasa-Gothic">Sarasa Mono（等宽更纱黑体）</a>作为编码字体，这是知乎大v——微软字体设计师Belleve的作品，有非常严格的中英文等宽，中文部分是思源黑体。</p></li>
+</ul>
+
+<blockquote>
+<p>关闭最后一个标签页会关闭窗口，这不是很方便，可以在“选项-高级-会话”中，取消“最后一个标签关闭时推出Xshell”，这样就可以像浏览器一样，关闭最后一个标签后打开空白页了。</p>
+</blockquote>
+
+<hr />
+
+<h2 id="包管理工具yum和yum-cron">包管理工具yum和yum-cron</h2>
+
+<p>简单的介绍一下我们的好朋友yum，装软件全靠它了</p>
+
+<ul>
+<li><p>yum clean all：清楚yum的各项缓存</p></li>
+
+<li><p>yum makecache：建立新的yum缓存</p></li>
+</ul>
+
+<p>如果安装的是minimal版本，上面两项最开始应该执行一次。</p>
+
+<ul>
+<li><p>yum update：更新现有软件包</p></li>
+
+<li><p>yum install xxxxx：安装软件包</p></li>
+
+<li><p>yum search xxxx*：寻找软件包，可以使用通配符，在只知道命令不知道包名的时候非常有用</p></li>
+
+<li><p>yum provides ****：查找提供某个命令的包，比如可以查谁提供了ifconfig</p></li>
+</ul>
+
+<hr />
+
+<p>官方软件源的软件未必是最新版，但是基本都是在保证兼容的情况下有用最新的安全补丁的版本。因此，我们可以考虑定期自动更新软件包，在这里，我选择使用yum cron。如果不像我这么懒的话，也可以自己来经常更新。</p>
+
+<p>首先，安装yum cron</p>
+
+<pre><code class="language-shell">yum install yum-cron -y
+</code></pre>
+
+<p>更改/etc/yum/yum-cron.conf</p>
+
+<pre><code class="language-shell">#自动下载更新，默认就是yes
+download_updates = yes
+
+#自动安装更新，默认是no
+apply_updates = yes
+
+#随机的等待时间设置为0，立即执行，这个配置是为多机交替更新准备的，单机的话会影响对具体更新时间的判断
+random_sleep = 0
+</code></pre>
+
+<p>这样就相当于每天执行一次yum update，为你更新最新的软件包了。</p>
+
+<hr />
+
+<h2 id="一些常见的软件包">一些常见的软件包</h2>
+
+<ul>
+<li><p>vim：vi的加强版，代码高亮，插件众多。</p></li>
+
+<li><p>wget：下载工具，相对curl更专注于下载文件。</p></li>
+
+<li><p>man-pages：查看程序自带的手册。</p></li>
+
+<li><p>git：版本控制工具，方便使用github等版本仓库平台。</p></li>
+
+<li><p>screen：防止因为断线导致程序运行中断，编译大程序必备。</p></li>
+
+<li><p>net-tools：CentOS 7精简了ifconfig等指令，可以通过安装这个包补充上。</p></li>
+
+<li><p>epel-release：CentOS的EPEL软件源，很多软件都需要在这个源下载，<strong>建议安装</strong>。</p></li>
+</ul>
+
+<p>至于更多的软件包，还待各位自行开发。</p>
+
+<p><strong>P.S.</strong> 部分软件包Vultr定制的版本是都有附带的，自行安装的minimal版则需要手动安装。</p>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/linux/" rel="tag">Linux</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/centos/" rel="tag">CentOS</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jason Han avatar" src="/img/auther.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">作者 Jason Han</span>
+	</div>
+	<div class="authorbox__description">
+		码农 / 死宅 / 数码粉丝 / 云养猫爱好者
+	</div>
+	<div class="authorbox__description">
+		<b>文章为作者原创，转载请著名出处</b>
+	</div>
+</div>
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="/linux/days_with_vps_vol0/" rel="prev"><span class="post-nav__caption">«上一篇</span><p class="post-nav__post-title">从零开始的VPS生活 Vol0：如何花掉你的钱</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="/linux/days_with_vps_vol1_2/" rel="next"><span class="post-nav__caption">上一篇»</span><p class="post-nav__post-title">从零开始的VPS生活 Vol1-2：初见CentOS7——基础安全</p></a>
+	</div>
+</nav>
+
+	
+<div id="gitalk-container"></div>
+
+</main>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://www.baidu.com/s" target="_blank">
+		<label>
+			<span class="screen-reader-text">搜索:</span>
+			<input class="widget-search__field" type="text" placeholder="百度自定义搜索" value="" name="wd">
+		</label>
+		<input class="widget-search__submit" type="submit" value="搜索">
+		<input type="hidden" name="ct" value="noobear" />
+		<input type="hidden" name="si" value="www.noobear.com" />
+	</form>
+</div>
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_4/">从零开始的VPS生活 Vol2-4：科学上网——稳定压倒一切的v2ray</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_3/">从零开始的VPS生活 Vol2-3：科学上网——新秀Wireguard</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_2/">从零开始的VPS生活 Vol2-2：科学上网——利用Let`s Encrypt证书搭建IKEv2/IPSec VPN</a></li>
+			<li class="widget__item"><a class="widget__link" href="/java/add_cors_rule_in_spring_boot/">为使用Spring Boot的Web应用更改CORS规则</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol2_1/">从零开始的VPS生活 Vol2-1：科学上网——轻松搭建Shadowsocks服务端</a></li>
+			<li class="widget__item"><a class="widget__link" href="/golang/proper_timing_for_waitgroup_add_in_goroutine/">正确地使用在多个goroutine中使用waitgroup</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol1_3/">从零开始的VPS生活 Vol1-3：初见CentOS7——网络优化</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol1_2/">从零开始的VPS生活 Vol1-2：初见CentOS7——基础安全</a></li>
+			<li class="widget__item"><a class="widget__link" href="/life/flash_for_ubuntu_1604/">为Ubuntu 16.04安装最新版Flash</a></li>
+			<li class="widget__item"><a class="widget__link" href="/linux/days_with_vps_vol1_1/">从零开始的VPS生活 Vol1-1：初见CentOS7——常用软件</a></li>
+		</ul>
+	</div>
+</div>
+
+	
+	
+	
+<div class="widget-taglist widget">
+	<h4 class="widget__title">标签</h4>
+	<div class="widget__content">
+		<a class="widget__link widget__link--taglist" href="/tags/centos" title="centos">centos (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/golang" title="golang">golang (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/lets-encrypt" title="lets-encrypt">lets-encrypt (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux (7)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/qq" title="qq">qq (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/shadowsocks" title="shadowsocks">shadowsocks (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/spring-boot" title="spring-boot">spring-boot (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/v2ray" title="v2ray">v2ray (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/vpn" title="vpn">vpn (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/vps" title="vps">vps (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/wine" title="wine">wine (2)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/wireguard" title="wireguard">wireguard (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e5%9f%9f%e5%90%8d" title="域名">域名 (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e5%ae%89%e5%85%a8" title="安全">安全 (1)</a>
+		<a class="widget__link widget__link--taglist" href="/tags/%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91" title="科学上网">科学上网 (4)</a>
+	</div>
+</div>
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2019 菜鸟小熊. <span class="footer__copyright-credits">Generated by <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and Hosted by </a><a href="https://www.vultr.com/?ref=6907667" rel="nofollow noopener" target="_blank">Vultr</a>.</span></p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+<script>
+var gitalk = new Gitalk({
+  clientID: "b2e19b887672d57af28f",
+  clientSecret: "43f12e5f6a46c5346fc4a3dbbd9589ea3726cf9e",
+  repo: "www.noobear.com",
+  owner: "jasonhancn",
+  admin: ["jasonhancn"],
+  id: md5(encodeURI(location.href))
+})
+gitalk.render('gitalk-container')
+</script>
+
+</body>
+</html>
