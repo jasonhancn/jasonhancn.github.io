@@ -84,19 +84,97 @@
 
 <p>一键包很多，但是我个人很喜欢用官方的方法安装，这样更容易更新。</p>
 
-<pre><code class="language-shell"># 切换到repo配置文件夹
-cd /etc/yum.repos.d
-# 下载ss的copr repo配置
-sudo wget -c https://copr.fedorainfracloud.org/coprs/librehat/shadowsocks/repo/epel-7/librehat-shadowsocks-epel-7.repo
+<blockquote>
+<p>librehat的copr很久没有更新了，这里暂时改为源码编译安装，如果后续还有更新的话，再换回来</p>
+</blockquote>
+
+<pre><code class="language-shell"># 需要git来获取源码
+sudo yum install git -y
 # 以下是官网要求安装的包
 sudo yum install epel-release -y
 sudo yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto c-ares-devel libev-devel libsodium-devel mbedtls-devel -y
-# 相比官网要求，这里还缺一个libsodium.so.13，可能是Vultr的锅，得装
-sudo yum install libsodium13 -y
-# 更新一下所有包
-sudo yum update -y
-# 安装ss
-sudo yum install shadowsocks-libev -y
+# 获取源码
+git clone https://github.com/shadowsocks/shadowsocks-libev.git
+cd shadowsocks-libev
+git submodule update --init --recursive
+# 编译安装
+./autogen.sh &amp;&amp; ./configure &amp;&amp; make
+sudo make install
+</code></pre>
+
+<p>如果是更新的话：</p>
+
+<pre><code class="language-shell">cd shadowsocks-libev
+git pull
+git submodule update --init --recursive
+./autogen.sh &amp;&amp; ./configure &amp;&amp; make
+sudo make install
+</code></pre>
+
+<p>这里参考debian的配置文件，为其配置默认值和系统服务，详情可以阅读源码的debain目录</p>
+
+<p>为了适配CentOS，要将Group改为nobody，代替debain配置文件中的nogroup</p>
+
+<p>因为是编译安装，所以要将ExecStart中的可执行文件位置改为/usr/local/bin/ss-server</p>
+
+<p>创建文件：/etc/default/shadowsocks-libev</p>
+
+<pre><code class="language-conf"># Defaults for shadowsocks initscript
+# sourced by /etc/init.d/shadowsocks-libev
+# installed at /etc/default/shadowsocks-libev by the maintainer scripts
+
+#
+# This is a POSIX shell fragment
+#
+# Note: `START', `GROUP' and `MAXFD' options are not recognized by systemd.
+# Please change those settings in the corresponding systemd unit file.
+
+# Enable during startup?
+START=yes
+
+# Configuration file
+CONFFILE=&quot;/etc/shadowsocks-libev/config.json&quot;
+
+# Extra command line arguments
+DAEMON_ARGS=&quot;-u&quot;
+
+# User and group to run the server as
+USER=nobody
+GROUP=nobody
+
+# Number of maximum file descriptors
+MAXFD=32768
+</code></pre>
+
+<p>创建文件：/lib/systemd/system/shadowsocks-libev.service</p>
+
+<pre><code class="language-conf">#  This file is part of shadowsocks-libev.
+#
+#  Shadowsocks-libev is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 3 of the License, or
+#  (at your option) any later version.
+#
+#  This file is default for Debian packaging. See also
+#  /etc/default/shadowsocks-libev for environment variables.
+
+[Unit]
+Description=Shadowsocks-libev Default Server Service
+Documentation=man:shadowsocks-libev(8)
+After=network.target
+
+[Service]
+Type=simple
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+EnvironmentFile=/etc/default/shadowsocks-libev
+User=nobody
+Group=nobody
+LimitNOFILE=32768
+ExecStart=/usr/local/bin/ss-server -c $CONFFILE $DAEMON_ARGS
+
+[Install]
+WantedBy=multi-user.target
 </code></pre>
 
 <p>修改配置文件/etc/shadowsocks-libev/config.json</p>
@@ -121,22 +199,11 @@ sudo firewall-cmd --permanent --add-port=888/tcp
 sudo firewall-cmd --permanent --add-port=888/udp
 # 防火墙生效
 sudo firewall-cmd --reload
-# 注意：如果使用1024以下的低端口，需要赋予它绑定低端口的Capacity
-sudo setcap cap_net_bind_service=+ep /usr/bin/ss-server
 # 启动ss服务
 sudo systemctl enable shadowsocks-libev
 # 启动ss
 sudo systemctl start shadowsocks-libev
 </code></pre>
-
-<blockquote>
-<p>在设置了低端口的情况下，因为setcap是对文件生效的，所以如果版本更新了还需要重新设置一次。</p>
-
-<p>因为开启了yum-cron自动更新，所以可能会有第一天好好的第二天就boom了的情况发生，因此可以在/etc/yum/yum-cron.conf的最后加上exclude = shadowsocks*，排除掉自动更新，之后每次手动更新后执行setcap来保证有绑定低端口的权限。</p>
-
-<p>另外一种方法就是用crontab设置一个定时任务，每天凌晨4:30之类的时间自动执行一次setcap，然后重启ss服务
-当然，不想这么麻烦直接设置一个1024以上的端口就行了。</p>
-</blockquote>
 
 <p>Enjoy it~</p>
 
