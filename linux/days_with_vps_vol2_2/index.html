@@ -180,8 +180,7 @@ include strongswan.d/*.conf
 <p>最后开放防火墙的转发和对应端口</p>
 
 <pre><code class="language-shell">firewall-cmd --permanent --add-masquerade
-firewall-cmd --permanent --add-port=500/udp
-firewall-cmd --permanent --add-port=4500/udp
+firewall-cmd --permanent --add-service=ipsec
 firewall-cmd --reload
 </code></pre>
 

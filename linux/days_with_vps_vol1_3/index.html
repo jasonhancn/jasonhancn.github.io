@@ -169,6 +169,8 @@ CentOS Linux (0-rescue-96aa007d97204c57aebfaf6879824e56) 7 (Core)
 <p>现在我们回到优化网络的话题上来，首先加载bbr拥塞控制算法的kernel mod：</p>
 
 <pre><code class="language-shell">/sbin/modprobe bbr
+# 一些新版本的内核可能换了一个名称，如果不行的话试一下下面这种写法
+/sbin/modprobe tcp_bbr
 </code></pre>
 
 <p>修改/etc/sysctl.conf，添加以下配置</p>
